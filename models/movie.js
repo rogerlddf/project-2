@@ -17,17 +17,24 @@ module.exports = (sequelize, DataTypes) => {
     //   type: DataTypes.TEXT,
     //   allowNull: false,
     //   len: [1]
-    // },
+    // }
+    // ,
+    // playlistId: {
+    //   type: DataTypes.INTEGER,
+    //   references: {
+    //     model: 'playlists',
+    //     key: 'id'
+    //   }
+    // }
   });
 
-  Movie.associate = (models) => {
-    // A Movie can't be created without a Playlist due to the foreign key constraint
-    Movie.belongsTo(models.Playlist, {
-      foreignKey: {
-        allowNull: false
-      }
-    });
-  };
-
-  return Movie;
+  Movie.associate = function (models) {
+  Movie.belongsTo(models.Playlist, {
+    foreignKey: "PlaylistId"
+  }
+  );
 };
+
+return Movie;
+};
+

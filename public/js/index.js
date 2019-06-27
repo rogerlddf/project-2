@@ -55,13 +55,15 @@ $(function () {
     // console.log($(this).prev().attr("href"));
     let chosenMovie = {
       title: $(this).prev().prev().prev().text(),
-      year: $(this).prev().prev().text(),
-      link: $(this).prev().attr("href")
+      year: $(this).prev().prev().text()
+      // ,
+      // link: $(this).prev().attr("href")
     }
     console.log(chosenMovie);
-    $.post('/api/movies', chosenMovie, function (response) {
-      alert("success");
-    });
+   
+    $.post('/api/movies', chosenMovie, function (data) {
+      console.log(data); // John
+    }, "json");
   })
  
 
