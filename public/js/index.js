@@ -113,11 +113,15 @@ $(function () {
       link: $(this).prev().attr("href")
     }
     console.log(chosenMovie);
-   
-    $.post('/api/movies', chosenMovie, function (data) {
-      console.log(data); // John
-    }, "json")
-     .then(location.reload());
+   if(playlistId) {
+     $.post('/api/movies', chosenMovie, function (data) {
+       console.log(data); // John
+     }, "json")
+       .then(location.reload());
+   } else {
+     alert("Please choose a Playlist");
+   }
+  
   });
 
   // A function to get Playlists and then render our list of Authors
