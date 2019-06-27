@@ -27,21 +27,21 @@ $(function () {
 
     var updating = false;
 
-    // If we have this section in our url, we pull out the post id from the url
+    // If we have this section in our url, we pull out the movie id from the url
     // In '?post_id=1', postId is 1
-    if (url.indexOf("?movie_id=") !== -1) {
-      movieId = url.split("=")[1];
-      getMovieData(movieId, "movie");
-    }
-    // Otherwise if we have an author_id in our url, preset the author select box to be our Playlist
-    else if (url.indexOf("?playlist_id=") !== -1) {
-      playlistId = url.split("=")[1];
-    }
+    // if (url.indexOf("?movie_id=") !== -1) {
+    //   movieId = url.split("=")[1];
+    //   getMovieData(movieId, "movie");
+    // }
+    // // Otherwise if we have an author_id in our url, preset the author select box to be our Playlist
+    // else if (url.indexOf("?playlist_id=") !== -1) {
+    //   playlistId = url.split("=")[1];
+    // }
 
-    if (updating) {
-      newMovie.id = movieId;
-      updateMovie(newMovie);
-    }
+    // if (updating) {
+    //   newMovie.id = movieId;
+    //   updateMovie(newMovie);
+    // }
 
     // Gets post data for the current post if we're editing, or if we're adding to an palylist's existing movies
     function getMovieData(id, type) {
@@ -105,17 +105,19 @@ $(function () {
 
   $(document).on("click", ".addToPlayList", function(event) {
     event.preventDefault();
+    let playlistId = $(".custom-select").val();
     let chosenMovie = {
       title: $(this).prev().prev().prev().text(),
-      year: $(this).prev().prev().text()
-      // ,
-      // link: $(this).prev().attr("href")
+      year: $(this).prev().prev().text(),
+      PlaylistId: playlistId,
+      link: $(this).prev().attr("href")
     }
     console.log(chosenMovie);
    
     $.post('/api/movies', chosenMovie, function (data) {
       console.log(data); // John
-    }, "json");
+    }, "json")
+     .then(location.reload());
   });
 
   // A function to get Playlists and then render our list of Authors

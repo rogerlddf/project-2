@@ -8,7 +8,7 @@ module.exports = app => {
     });
   });
 
-  app.get("/api/authors/:id", (req, res) => {
+  app.get("/api/playlists/:id", (req, res) => {
     // 2; Add a join to include all of the Author's Posts here
     db.Playlist.findOne({
       include: [db.Movie],

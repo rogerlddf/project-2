@@ -61,8 +61,8 @@ $(function () {
   // Function for retrieving playlists and getting them ready to be rendered to the page
   function getPlaylists() {
     $.get("/api/playlists", function(data) {
-      var rowsToAdd = [];
-      for (var i = 0; i < data.length; i++) {
+      let rowsToAdd = [];
+      for (let i = 0; i < data.length; i++) {
         rowsToAdd.push(createPlaylistRow(data[i]));
       }
       renderPlayList(rowsToAdd);

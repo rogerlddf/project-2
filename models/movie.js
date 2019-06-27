@@ -11,21 +11,12 @@ module.exports = function(sequelize, DataTypes) {
       type: DataTypes.STRING,
       allowNull: false,
       len: [1]
+    },
+    link: {
+      type: DataTypes.TEXT,
+      allowNull: false,
+      len: [1]
     }
-    // ,
-    // link: {
-    //   type: DataTypes.TEXT,
-    //   allowNull: false,
-    //   len: [1]
-    // }
-    // ,
-    // playlistId: {
-    //   type: DataTypes.INTEGER,
-    //   references: {
-    //     model: 'playlists',
-    //     key: 'id'
-    //   }
-    // }
   });
 
   Movie.associate = function(models) {
