@@ -2,7 +2,7 @@
   "development": {
     "username": "root",
     "password": "Andreyroot@#",
-    "database": "peopledb",
+    "database": "Moive_db",
     "host": "localhost",
     "dialect": "mysql"
   },
