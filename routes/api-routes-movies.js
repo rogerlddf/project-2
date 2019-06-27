@@ -58,29 +58,4 @@ module.exports = function(app) {
         res.json(dbMovie);
       });
   });
-
-
-
-  // Get all examples
-  // app.get("/api/movies", function(req, res) {
-  //   db.Movie_db.findAll({}).then(function(dbMovie) {
-  //     res.json(dbMovie);
-  //   });
-  // });
-
-  // Create a new example
-  // app.post("/api/movies", function(req, res) {
-  //   db.Movie_db.create(req.body).then(function(dbMovie) {
-  //     res.json(dbMovie);
-  //   });
-  // });
-
-  // Delete an example by id
-  // app.delete("/api/movies/:id", function(req, res) {
-  //   db.Movie_db.destroy({ where: { id: req.params.id } }).then(function(
-  //     dbMovie
-  //   ) {
-  //     res.json(dbMovie);
-  //   });
-  // });
 };

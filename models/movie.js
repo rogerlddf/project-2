@@ -1,5 +1,5 @@
-module.exports = (sequelize, DataTypes) => {
-  let Movie = sequelize.define("Movie", {
+module.exports = function(sequelize, DataTypes) {
+  var Movie = sequelize.define("Movie", {
     title: {
       type: DataTypes.STRING,
       allowNull: false,
@@ -28,13 +28,11 @@ module.exports = (sequelize, DataTypes) => {
     // }
   });
 
-  Movie.associate = function (models) {
-  Movie.belongsTo(models.Playlist, {
-    foreignKey: "PlaylistId"
-  }
-  );
-};
+  Movie.associate = function(models) {
+    Movie.belongsTo(models.Playlist, {
+      foreignKey: "PlaylistId"
+    });
+  };
 
-return Movie;
+  return Movie;
 };
-
