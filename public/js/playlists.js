@@ -31,7 +31,7 @@ $(function () {
 
   // A function for creating an plyalist. Calls getPlaylists upon completion
   function upsertPlaylist(playlistData){
-    $.post("/api/playlists", playlistData).then(getPlaylists);
+    $.post("/api/playlists", playlistData).then(getPlaylists).then(location.reload());;
   }
 
   // Function for creating a new list row for playlists
