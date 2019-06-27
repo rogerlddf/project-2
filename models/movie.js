@@ -7,16 +7,17 @@ module.exports = (sequelize, DataTypes) => {
         len: [1]
       }
     },
-    image: {
-      type: DataTypes.TEXT,
-      allowNull: false,
-      len: [1]
-    },
     year: {
       type: DataTypes.STRING,
       allowNull: false,
       len: [1]
     }
+    // ,
+    // link: {
+    //   type: DataTypes.TEXT,
+    //   allowNull: false,
+    //   len: [1]
+    // },
   });
 
   Movie.associate = (models) => {

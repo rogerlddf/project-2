@@ -22,13 +22,7 @@ $(function () {
       method: "GET"
     }).then(response => {
       let movies = response.Search;
-      // let chosenMovie = {
-      //   title: movie.Title,
-      //   image: movie.Poster,
-      //   year: movie.Year
-      // }
-
-      // console.log(movies);
+      
       let output = '';
       $.each(movies, (index, movie) => {
         
@@ -37,14 +31,14 @@ $(function () {
               <img class='responsive-img hoverable z-depth-1' src="${movie.Poster}">
               <h6 class="truncated">${movie.Title}</h6>
               <p class="truncated">${movie.Year}</p>
-            <a href="http://imdb.com/title/${movie.imdbID}" target="_blank" class="btn blue darken-3 z-depth-2">IMDB</a>
-            <hr>
+            <a href="http://imdb.com/title/${movie.imdbID}" target="_blank" class="btn btn-info">IMDB</a>
+            
             <button data-title="${movie.Title}" type="button" class="btn btn-info addToPlayList"> Add To Playlist </button>
-            <hr>
+            
             </div>
         `;
+    
 
-       
       });
 
       $(movieListAll).html(output);
@@ -54,11 +48,22 @@ $(function () {
       });
   });
 
-  $(document).on("click", ".addToPlayList", function(event) {
+  $(document).on("click", ".addToPlayList", function (event) {
     event.preventDefault();
-    console.log($(this).prevAll());
-    // alert("clicked")
+    // console.log($(this).prev().prev().prev().text());
+    // console.log($(this).prev().prev().text());
+    // console.log($(this).prev().attr("href"));
+    let chosenMovie = {
+      title: $(this).prev().prev().prev().text(),
+      year: $(this).prev().prev().text(),
+      link: $(this).prev().attr("href")
+    }
+    console.log(chosenMovie);
+    $.post('/api/movies', chosenMovie, function (response) {
+      alert("success");
+    });
   })
+ 
 
 });
 
