@@ -28,7 +28,7 @@ $(function () {
       //   year: movie.Year
       // }
 
-      console.log(movies);
+      // console.log(movies);
       let output = '';
       $.each(movies, (index, movie) => {
         
@@ -54,10 +54,10 @@ $(function () {
       });
   });
 
-  $("button").on("click", function(event) {
-    // event.preventDefault();
-    // console.log($(this).prevAll());
-    alert("clicked")
+  $(document).on("click", ".addToPlayList", function(event) {
+    event.preventDefault();
+    console.log($(this).prevAll());
+    // alert("clicked")
   })
 
 });

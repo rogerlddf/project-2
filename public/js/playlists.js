@@ -60,7 +60,7 @@ $(function () {
 
   // Function for retrieving playlists and getting them ready to be rendered to the page
   function getPlaylists() {
-    $.get("/api/playlists", function (data) {
+    $.get("/api/playlists", function(data) {
       var rowsToAdd = [];
       for (var i = 0; i < data.length; i++) {
         rowsToAdd.push(createPlaylistRow(data[i]));
@@ -78,7 +78,7 @@ $(function () {
       .remove();
     playlistContainer.children(".alert").remove();
     if (rows.length) {
-      console.log(rows);
+      // console.log(rows);
       playList.prepend(rows);
     } else {
       renderEmpty();
