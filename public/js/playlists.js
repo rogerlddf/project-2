@@ -1,4 +1,4 @@
-$(function () {
+$(function() {
   // Getting references to the name input and playlist container, as well as the table body
   const nameInput = $("#playlist-name");
   const playList = $("tbody");
@@ -30,12 +30,14 @@ $(function () {
   }
 
   // A function for creating an plyalist. Calls getPlaylists upon completion
-  function upsertPlaylist(playlistData){
-    $.post("/api/playlists", playlistData).then(getPlaylists).then(location.reload());;
+  function upsertPlaylist(playlistData) {
+    $.post("/api/playlists", playlistData)
+      .then(getPlaylists)
+      .then(location.reload());
   }
 
   // Function for creating a new list row for playlists
-  function createPlaylistRow(playlistData){
+  function createPlaylistRow(playlistData) {
     var newTr = $("<tr>");
     newTr.data("playlist", playlistData);
     newTr.append("<td>" + playlistData.name + "</td>");
@@ -45,7 +47,9 @@ $(function () {
       newTr.append("<td>0</td>");
     }
     newTr.append(
-      "<td><a href='/blog?playlist_id=" + playlistData.id + "'>Go to Movies</a></td>"
+      "<td><a href='/blog?playlist_id=" +
+        playlistData.id +
+        "'>Go to Movies</a></td>"
     );
     // newTr.append(
     //   "<td><a href='/cms?playlist_id=" +

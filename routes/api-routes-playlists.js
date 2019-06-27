@@ -20,13 +20,13 @@ module.exports = app => {
     });
   });
 
-  app.post("/api/playlists", function (req, res) {
-    db.Playlist.create(req.body).then(function (dbPlaylist) {
+  app.post("/api/playlists", function(req, res) {
+    db.Playlist.create(req.body).then(function(dbPlaylist) {
       res.json(dbPlaylist);
     });
   });
 
-  app.delete("/api/playlists/:id", function (req, res) {
+  app.delete("/api/playlists/:id", function(req, res) {
     db.Playlist.destroy({
       where: {
         id: req.params.id
@@ -35,5 +35,4 @@ module.exports = app => {
       res.json(dbPlaylist);
     });
   });
-
 };

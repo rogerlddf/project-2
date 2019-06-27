@@ -19,7 +19,7 @@ module.exports = function(sequelize, DataTypes) {
     }
   });
 
-  Movie.associate = function(models) {
+  Movie.associate = models => {
     Movie.belongsTo(models.Playlist, {
       foreignKey: "PlaylistId"
     });
