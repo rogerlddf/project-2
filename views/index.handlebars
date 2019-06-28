@@ -1,33 +1,97 @@
-<div id="home">
-  <div class="container">
-    <div class="row">
-      <div class="col-8 offset-2">
-        <h1>{{msg}}</h1>
-        <h2>This is our Home Page!</h2>
-        <form class="clearfix mb-4" action="POST">
-          <div class="form-group">
-            <label for="example-text">Example Text</label>
-            <input type="text" id="example-text" class="form-control" aria-describedby="example-text" placeholder="Enter Example Text">
-          </div>
-          <div class="form-group">
-            <label for="example-description">Example Description</label>
-            <textarea class="form-control" id="example-description" aria-describedby="example-description" placeholder="Enter Example Description"></textarea>
-          </div>
-          <button id="submit" class="btn btn-primary float-right">Submit</button>
-        </form>
-        <h3>Examples:</h3>
-        <ul id="example-list" class="list-group">
-          {{#each examples}}
-          <li data-id="{{this.id}}" class="list-group-item">
-            <a href="example/{{this.id}}">{{this.text}}</a>
-            <button class="btn btn-danger float-right delete">ｘ</button>
-          </li>
-          {{/each}}
-        </ul>
+<div class="container">
+  <!-- Jumbotron -->
+  <div class="jumbotron hide-on-small-only" style="background-color: black; color: white">
+    <h4 class="text-center">Search For Your Favorite Movie </h4>
+    <h6 class="text-center"></h6>
+    
+  </div>
+  <div class="row">
+    <div class="col-md-8 offset-md-2">
+      <div class="playlist-container">
+        <h1>Playlists</h1>
+        <table class="table table-striped">
+          <thead>
+            <tr>
+              <th>Name</th>
+              <th># of Movies</th>
+              <th>See Playlist's Movies</th>
+              {{!-- <th>New Movie</th> --}}
+              <th>Delete Playlist</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr id="form-row">
+              <form id="playlist-form">
+                <td colspan="4">
+                  <input placeholder="Enter a playlist name" id="playlist-name" type="text" />
+                </td>
+                <td>
+                  <button type="submit" class="btn btn-info">Create Playlist</button>
+                </td>
+              </form>
+            </tr>
+          </tbody>
+        </table>
       </div>
     </div>
   </div>
+
+  <div class="row justify-content-center">
+
+    <div class="col-8">
+
+      <!-- Current Movies-->
+      <div class="card">
+        <div class="card-header"><strong>Add Movie </strong></div>
+        <div class="card-body">
+          <div class="form">
+            <label for="movie-search"><i class="fas fa-film"></i> Search Your Movie </label>
+            <input class="form-control" id="movie-search" placeholder="Movie Name" type="text">
+            {{!-- <div class="col s12 m6">
+                  <button class="btn blue darken-3 z-depth-3 " id="submit" type="submit"><strong>Movie</strong>
+                  </button>
+                </div> --}}
+            <div class="col col-m6">
+              <!-- button for ALL MOVIES -->
+              <button class="btn btn-info" id="submitAll" type="submit"><strong>All
+                  Movies </strong> </button>
+            </div>
+            <div class="col-m6 ">
+              <div class="form-group">
+                <label for="category">Select Playlist:</label>
+                <select class="custom-select" id="playlist">
+                </select>
+              </div>
+              <br />
+              {{!-- <button type="submit" class="btn btn-success submit">Submit</button> --}}
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+  </div>
+
+  <!-- Entry Form FOR ALL MOVIES -->
+  <div class="row justify-content-center" id="all-movies-row">
+    <div class="col-12">
+      <div class="card mb-4">
+        <div class="card-header"><strong>All Movies</strong></div>
+        <div class="card-body">
+          <div class="row" id="allmovie-list"></div>
+        </div>
+      </div>
+    </div>
+
+  </div>
 </div>
 
-<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<!--JavaScript at end of body for optimized loading-->
+<!-- <script type="text/javascript" src="js/materialize.min.js"></script> -->
+<script src="https://code.jquery.com/jquery-3.4.1.min.js"
+  integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
+<!-- axios -->
+{{!-- <script src="https://unpkg.com/axios/dist/axios.min.js"></script> --}}
 <script src="/js/index.js"></script>
+<script src="/js/playlists.js"></script>
