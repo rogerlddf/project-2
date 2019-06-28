@@ -1,15 +1,15 @@
 const db = require("../models");
 
 module.exports = app => {
-
-  //Testing
+  //Testing my playlists
   app.get("/", (req, res) => {
     db.Playlist.findAll({
       include: [db.Movie]
-    }).then(playlists => {
-      res.render("index", { playlists: playlists });
-      // console.log(playlists[0].Movies);
-    });
+    })
+      .then(playlists => {
+        res.render("index", { playlists: playlists });
+      })
+      // .then(location.reload());
   });
 
   app.post("/playlists", (req, res) => {
