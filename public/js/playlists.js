@@ -67,7 +67,7 @@ $(function() {
       renderPlayList(rowsToAdd);
       nameInput.val("");
     });
-  }
+  };
 
   // A function for rendering the list of playlists to the page
   let renderPlayList = rows => {
@@ -82,7 +82,7 @@ $(function() {
     } else {
       renderEmpty();
     }
-  }
+  };
 
   // Function for handling what to render when there are no playlists
   const renderEmpty = () => {
@@ -90,7 +90,7 @@ $(function() {
     alertDiv.addClass("alert alert-danger");
     alertDiv.text("You must create an Playlist before you can search a Movie.");
     playlistContainer.append(alertDiv);
-  }
+  };
 
   // Function for handling what happens when the delete button is pressed
   function handleDeleteButtonPress() {

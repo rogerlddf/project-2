@@ -84,7 +84,7 @@ $(function() {
   // A function to get Playlists and then render our list of Authors
   const getPlaylists = () => {
     $.get("/api/playlists", renderPlayList);
-  }
+  };
   // Function to either render a list of playlist, or if there are none, direct the user to the page
   // to create an playlist first
   const renderPlayList = data => {
