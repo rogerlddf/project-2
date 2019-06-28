@@ -8,6 +8,59 @@ $(function() {
   $(document).on("submit", "#playlist-form", handlePlaylistFormSubmit);
   $(document).on("click", ".delete-playlist", handleDeleteButtonPress);
 
+  // The code below handles the case where we want to get blog movies for a specific playlist
+  // Looks for a query param in the url for playlist_id
+
+  var url = window.location.search;
+  var authorId;
+  if (url.indexOf("?playlist_id=") !== -1) {
+    playlistId = url.split("=")[1];
+    getMovies(playlistId);
+  }
+  // If there's no playlistId we just get all movies as usual
+  else {
+    getMovies();
+  }
+
+  // This function grabs movies from the database and updates the view
+  function getPosts(author) {
+    playlistId = playlist || "";
+    if (playlistId) {
+      playlistId = "/?playlist_id=" + playlistId;
+    }
+    $.get("/api/movies" + playlistId, function(data) {
+      console.log("Movies", data);
+      movies = data;
+      if (!movies || !movies.length) {
+        displayEmpty(playlist);
+      } else {
+        initializeRows();
+      }
+    });
+  }
+
+  // This function does an API call to delete movies
+  function deleteMovie(id) {
+    $.ajax({
+      method: "DELETE",
+      url: "/api/movies/" + id
+    })
+      .then(function () {
+        getMovies();
+      });
+  }
+
+  // InitializeRows handles appending all of our constructed post HTML inside blogContainer
+  function initializeRows() {
+    blogContainer.empty();
+    var postsToAdd = [];
+    for (var i = 0; i < posts.length; i++) {
+      postsToAdd.push(createNewRow(posts[i]));
+    }
+    blogContainer.append(postsToAdd);
+  }
+
+
   // Getting the initial list of Playlist
   getPlaylists();
 
@@ -27,20 +80,24 @@ $(function() {
     upsertPlaylist({
       name: nameInput.val().trim()
     });
-  };
+  }
 
   // A function for creating an plyalist. Calls getPlaylists upon completion
   function upsertPlaylist(playlistData) {
     $.post("/api/playlists", playlistData)
       .then(getPlaylists)
       .then(location.reload());
-  };
+  }
 
   // Function for creating a new list row for playlists
   function createPlaylistRow(playlistData) {
-    var newTr = $("<tr>");
+    let newTr = $("<tr class='triger'>");
+
+    //creating a movie row
+    let movieTr = $("<tr class='content'");
+
     newTr.data("playlist", playlistData);
-    newTr.append("<td>" + playlistData.name + "</td>");
+    newTr.append("<td >" + playlistData.name + "</td>");
     if (playlistData.Movies) {
       newTr.append("<td> " + playlistData.Movies.length + "</td>");
     } else {
@@ -55,7 +112,7 @@ $(function() {
       "<td><a style='cursor:pointer;color:red' class='delete-playlist'>Delete Playlist</a></td>"
     );
     return newTr;
-  };
+  }
 
   // Function for retrieving playlists and getting them ready to be rendered to the page
   function getPlaylists() {
@@ -67,7 +124,7 @@ $(function() {
       renderPlayList(rowsToAdd);
       nameInput.val("");
     });
-  };
+  }
 
   // A function for rendering the list of playlists to the page
   function renderPlayList(rows) {
