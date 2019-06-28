@@ -12,7 +12,7 @@ $(function() {
   getPlaylists();
 
   // A function to handle what happens when the form is submitted to create a new Playlist
-  function handlePlaylistFormSubmit(event) {
+  const handlePlaylistFormSubmit = event => {
     event.preventDefault();
     // Don't do anything if the name fields hasn't been filled out
     if (
@@ -27,17 +27,17 @@ $(function() {
     upsertPlaylist({
       name: nameInput.val().trim()
     });
-  }
+  };
 
   // A function for creating an plyalist. Calls getPlaylists upon completion
-  function upsertPlaylist(playlistData) {
+  const upsertPlaylist = playlistData => {
     $.post("/api/playlists", playlistData)
       .then(getPlaylists)
       .then(location.reload());
-  }
+  };
 
   // Function for creating a new list row for playlists
-  function createPlaylistRow(playlistData) {
+  const createPlaylistRow = playlistData => {
     var newTr = $("<tr>");
     newTr.data("playlist", playlistData);
     newTr.append("<td>" + playlistData.name + "</td>");
@@ -51,20 +51,15 @@ $(function() {
         playlistData.id +
         "'>Go to Movies</a></td>"
     );
-    // newTr.append(
-    //   "<td><a href='/cms?playlist_id=" +
-    //     playlistData.id +
-    //     "'>Search a Movie</a></td>"
-    // );
     newTr.append(
       "<td><a style='cursor:pointer;color:red' class='delete-playlist'>Delete Playlist</a></td>"
     );
     return newTr;
-  }
+  };
 
   // Function for retrieving playlists and getting them ready to be rendered to the page
-  function getPlaylists() {
-    $.get("/api/playlists", function(data) {
+  const getPlaylists = () => {
+    $.get("/api/playlists", data => {
       let rowsToAdd = [];
       for (let i = 0; i < data.length; i++) {
         rowsToAdd.push(createPlaylistRow(data[i]));
@@ -75,7 +70,7 @@ $(function() {
   }
 
   // A function for rendering the list of playlists to the page
-  function renderPlayList(rows) {
+  let renderPlayList = rows => {
     playList
       .children()
       .not(":last")
@@ -90,7 +85,7 @@ $(function() {
   }
 
   // Function for handling what to render when there are no playlists
-  function renderEmpty() {
+  const renderEmpty = () => {
     let alertDiv = $("<div>");
     alertDiv.addClass("alert alert-danger");
     alertDiv.text("You must create an Playlist before you can search a Movie.");

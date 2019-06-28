@@ -7,7 +7,7 @@
 // };
 
 module.exports = (sequelize, DataTypes) => {
-  var Playlist = sequelize.define("Playlist", {
+  let Playlist = sequelize.define("Playlist", {
     // Giving the Author model a name of type STRING
     name: DataTypes.STRING
   });

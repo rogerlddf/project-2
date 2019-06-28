@@ -1,8 +1,6 @@
 // movie gifs js
 $(function() {
   let form = $("#movie-search");
-  // let movieList = $("#movie-list");
-  // let movieList = document.getElementById('movie-list');
   let movieListAll = document.getElementById("allmovie-list");
   let playlistSelect = $("#playlist");
   let playlistId;
@@ -30,7 +28,7 @@ $(function() {
       .then(response => {
         var movies = response.Search;
 
-        var output = "";
+        let output = "";
         $.each(movies, (index, movie) => {
           output += `
             <div class="collection well align-center col col-s6 col-m3">
@@ -74,7 +72,7 @@ $(function() {
         "/api/movies",
         chosenMovie,
         function(data) {
-          console.log(data); // John
+          console.log(data);
         },
         "json"
       ).then(location.reload());
@@ -84,14 +82,14 @@ $(function() {
   });
 
   // A function to get Playlists and then render our list of Authors
-  function getPlaylists() {
+  const getPlaylists = () => {
     $.get("/api/playlists", renderPlayList);
   }
-  // Function to either render a list of authors, or if there are none, direct the user to the page
-  // to create an author first
-  function renderPlayList(data) {
+  // Function to either render a list of playlist, or if there are none, direct the user to the page
+  // to create an playlist first
+  const renderPlayList = data => {
     // $(".hidden").removeClass("hidden");
-    var rowsToAdd = [];
+    let rowsToAdd = [];
     for (var i = 0; i < data.length; i++) {
       rowsToAdd.push(createPlaylistRow(data[i]));
     }
@@ -100,11 +98,11 @@ $(function() {
     console.log(playlistSelect);
     playlistSelect.append(rowsToAdd);
     playlistSelect.val(playlistId);
-  }
+  };
 
   // Creates the playlist options in the dropdown
   function createPlaylistRow(playlist) {
-    var listOption = $("<option>");
+    let listOption = $("<option>");
     listOption.attr("value", playlist.id);
     listOption.text(playlist.name);
     return listOption;
