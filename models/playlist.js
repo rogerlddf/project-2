@@ -1,11 +1,3 @@
-// module.exports = function(sequelize, DataTypes) {
-//   let Example = sequelize.define("Example", {
-//     text: DataTypes.STRING,
-//     description: DataTypes.TEXT
-//   });
-//   return Example;
-// };
-
 module.exports = (sequelize, DataTypes) => {
   let Playlist = sequelize.define("Playlist", {
     // Giving the Author model a name of type STRING
