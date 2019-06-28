@@ -12,7 +12,7 @@ $(function() {
   getPlaylists();
 
   // A function to handle what happens when the form is submitted to create a new Playlist
-  const handlePlaylistFormSubmit = event => {
+  function handlePlaylistFormSubmit(event) {
     event.preventDefault();
     // Don't do anything if the name fields hasn't been filled out
     if (
@@ -30,14 +30,14 @@ $(function() {
   };
 
   // A function for creating an plyalist. Calls getPlaylists upon completion
-  const upsertPlaylist = playlistData => {
+  function upsertPlaylist(playlistData) {
     $.post("/api/playlists", playlistData)
       .then(getPlaylists)
       .then(location.reload());
   };
 
   // Function for creating a new list row for playlists
-  const createPlaylistRow = playlistData => {
+  function createPlaylistRow(playlistData) {
     var newTr = $("<tr>");
     newTr.data("playlist", playlistData);
     newTr.append("<td>" + playlistData.name + "</td>");
@@ -58,7 +58,7 @@ $(function() {
   };
 
   // Function for retrieving playlists and getting them ready to be rendered to the page
-  const getPlaylists = () => {
+  function getPlaylists() {
     $.get("/api/playlists", data => {
       let rowsToAdd = [];
       for (let i = 0; i < data.length; i++) {
@@ -70,7 +70,7 @@ $(function() {
   };
 
   // A function for rendering the list of playlists to the page
-  let renderPlayList = rows => {
+  function renderPlayList(rows) {
     playList
       .children()
       .not(":last")
@@ -85,12 +85,12 @@ $(function() {
   };
 
   // Function for handling what to render when there are no playlists
-  const renderEmpty = () => {
+  function renderEmpty() {
     let alertDiv = $("<div>");
     alertDiv.addClass("alert alert-danger");
     alertDiv.text("You must create an Playlist before you can search a Movie.");
     playlistContainer.append(alertDiv);
-  };
+  }
 
   // Function for handling what happens when the delete button is pressed
   function handleDeleteButtonPress() {

@@ -48,9 +48,10 @@ $(function() {
       });
   });
 
-  $(document).on("click", ".addToPlayList", event => {
+  $(document).on("click", ".addToPlayList", function(event) {
     event.preventDefault();
     let playlistId = $(".custom-select").val();
+    console.log(playlistId)
     let chosenMovie = {
       title: $(this)
         .prev()
@@ -82,12 +83,12 @@ $(function() {
   });
 
   // A function to get Playlists and then render our list of Authors
-  const getPlaylists = () => {
+  function getPlaylists() {
     $.get("/api/playlists", renderPlayList);
-  };
+  }
   // Function to either render a list of playlist, or if there are none, direct the user to the page
   // to create an playlist first
-  const renderPlayList = data => {
+  function renderPlayList(data) {
     // $(".hidden").removeClass("hidden");
     let rowsToAdd = [];
     for (var i = 0; i < data.length; i++) {
@@ -98,7 +99,7 @@ $(function() {
     console.log(playlistSelect);
     playlistSelect.append(rowsToAdd);
     playlistSelect.val(playlistId);
-  };
+  }
 
   // Creates the playlist options in the dropdown
   function createPlaylistRow(playlist) {
