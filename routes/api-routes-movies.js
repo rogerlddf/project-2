@@ -30,7 +30,7 @@ module.exports = function(app) {
 
   // POST route for saving a new movie
   app.post("/api/movies", function(req, res) {
-    db.Movie.create(req.body).then(function(dbMovie) {
+    db.Movie.create({...req.body, playlistID:req.params.playlist_id}).then(function(dbMovie) {
       res.json(dbMovie);
     });
   });

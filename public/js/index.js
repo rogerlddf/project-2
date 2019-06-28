@@ -95,8 +95,8 @@ $(function() {
       rowsToAdd.push(createPlaylistRow(data[i]));
     }
     playlistSelect.empty();
-    console.log(rowsToAdd);
-    console.log(playlistSelect);
+    // console.log(rowsToAdd);
+    // console.log(playlistSelect);
     playlistSelect.append(rowsToAdd);
     playlistSelect.val(playlistId);
   }

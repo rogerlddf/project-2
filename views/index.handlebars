@@ -87,6 +87,27 @@
   </div>
 </div>
 
+{{!-- Testing my playlists --}}
+<div class="container">
+  <div class="row justify-content-center">
+  
+    {{#each playlists}}
+    <div class="col-4">
+      <h3 class="text-center">{{name}}</h3>
+      {{#each Movies}}
+      <div class="col-6">
+        <h3>Title: {{title}}</h3>
+        <p>Year: {{year}}</p>
+        <p>IMDB Link: {{link}}</p>
+      </div>
+      {{/each}}
+    </div>
+  
+    {{/each}}
+  </div>
+</div>
+
+
 <!--JavaScript at end of body for optimized loading-->
 <!-- <script type="text/javascript" src="js/materialize.min.js"></script> -->
 <script src="https://code.jquery.com/jquery-3.4.1.min.js"

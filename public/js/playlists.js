@@ -3,6 +3,9 @@ $(function() {
   const nameInput = $("#playlist-name");
   const playList = $("tbody");
   const playlistContainer = $(".playlist-container");
+  // let movieTr;
+  // let newTr;
+
   // Adding event listeners to the form to create a new object, and the button to delete
   // an Playlist
   $(document).on("submit", "#playlist-form", handlePlaylistFormSubmit);
@@ -11,54 +14,136 @@ $(function() {
   // The code below handles the case where we want to get blog movies for a specific playlist
   // Looks for a query param in the url for playlist_id
 
-  var url = window.location.search;
-  var authorId;
-  if (url.indexOf("?playlist_id=") !== -1) {
-    playlistId = url.split("=")[1];
-    getMovies(playlistId);
-  }
-  // If there's no playlistId we just get all movies as usual
-  else {
-    getMovies();
-  }
+  // var url = window.location.search;
+  // var playlistId;
+  // if (url.indexOf("?playlist_id=") !== -1) {
+  //   playlistId = url.split("=")[1];
+  //   getMovies(playlistId);
+  // }
+  // // If there's no playlistId we just get all movies as usual
+  // else {
+  //   getMovies();
+  // }
 
-  // This function grabs movies from the database and updates the view
-  function getPosts(author) {
-    playlistId = playlist || "";
-    if (playlistId) {
-      playlistId = "/?playlist_id=" + playlistId;
-    }
-    $.get("/api/movies" + playlistId, function(data) {
-      console.log("Movies", data);
-      movies = data;
-      if (!movies || !movies.length) {
-        displayEmpty(playlist);
-      } else {
-        initializeRows();
-      }
-    });
-  }
+  // // This function grabs movies from the database and updates the view
+  // function getMovies(playlist) {
+  //   playlistId = playlist || "";
+  //   if (playlistId) {
+  //     playlistId = "/?playlist_id=" + playlistId;
+  //   }
+  //   $.get("/api/movies" + playlistId, function(data) {
+  //     console.log("Movies", data);
+  //     movies = data;
+  //     if (!movies || !movies.length) {
+  //       displayEmpty(playlist);
+  //     } else {
+  //       initializeRows();
+  //     }
+  //   });
+  // }
 
-  // This function does an API call to delete movies
-  function deleteMovie(id) {
-    $.ajax({
-      method: "DELETE",
-      url: "/api/movies/" + id
-    })
-      .then(function () {
-        getMovies();
-      });
-  }
+  // // This function does an API call to delete movies
+  // function deleteMovie(id) {
+  //   $.ajax({
+  //     method: "DELETE",
+  //     url: "/api/movies/" + id
+  //   }).then(function() {
+  //     getMovies();
+  //   });
+  // }
 
-  // InitializeRows handles appending all of our constructed post HTML inside blogContainer
-  function initializeRows() {
-    blogContainer.empty();
-    var postsToAdd = [];
-    for (var i = 0; i < posts.length; i++) {
-      postsToAdd.push(createNewRow(posts[i]));
-    }
-    blogContainer.append(postsToAdd);
-  }
+  // // InitializeRows handles appending all of our constructed post HTML inside blogContainer
+  // function initializeRows() {
+  //   movieTr.empty();
+  //   var moviesToAdd = [];
+  //   for (let i = 0; i < movies.length; i++) {
+  //     moviesToAdd.push(createNewRow(movies[i]));
+  //   }
+  //   blogContainer.append(moviesToAdd);
+  // }
+
+  // // This function constructs a movies's HTML
+  // function createNewRow(movie) {
+  //   // var formattedDate = new Date(post.createdAt);
+  //   // formattedDate = moment(formattedDate).format("MMMM Do YYYY, h:mm:ss a");
+  //   var newMovieCard = $("<div>");
+  //   newMovieCard.addClass("card");
+  //   var newMovieCardHeading = $("<div>");
+  //   newMovieCardHeading.addClass("card-header");
+  //   var deleteBtn = $("<button>");
+  //   deleteBtn.text("x");
+  //   deleteBtn.addClass("delete btn btn-danger");
+  //   var editBtn = $("<button>");
+  //   editBtn.text("EDIT");
+  //   editBtn.addClass("edit btn btn-info");
+  //   var newMovieTitle = $("<h2>");
+  //   // var newPostDate = $("<small>");
+  //   // var newPostAuthor = $("<h5>");
+  //   // newPostAuthor.text("Written by: " + post.Author.name);
+  //   // newPostAuthor.css({
+  //   //   float: "right",
+  //   //   color: "blue",
+  //   //   "margin-top":
+  //   //     "-10px"
+  //   // });
+  //   var newMovieCardBody = $("<div>");
+  //   newMovieCardBody.addClass("card-body");
+  //   var newMovieBody = $("<p>");
+  //   newMovieTitle.text(movie.title + " ");
+  //   newMovieBody.text(movie.year);
+  //   // newPostDate.text(formattedDate);
+  //   // newMovieTitle.append(newPostDate);
+  //   newMovieCardHeading.append(deleteBtn);
+  //   newMovieCardHeading.append(editBtn);
+  //   newMovieCardHeading.append(newMovieTitle);
+  //   newMovieCardHeading.append(newMoviePlaylist);
+  //   newMovieCardBody.append(newMovieBody);
+  //   newMovieCard.append(newMovieCardHeading);
+  //   newMovieCard.append(newMovieCardBody);
+  //   newMovieCard.data("movie", movie);
+  //   return newMovieCard;
+  // }
+
+  // // This function figures out which post we want to delete and then calls deletePost
+  // function handleMovieDelete() {
+  //   var currentMovie = $(this)
+  //     .parent()
+  //     .parent()
+  //     .data("movie");
+  //   deletePost(currentMovie.id);
+  // }
+
+  // // This function figures out which post we want to edit and takes it to the appropriate url
+  // function handleMovieEdit() {
+  //   var currentMovie = $(this)
+  //     .parent()
+  //     .parent()
+  //     .data("movie");
+  //   window.location.href = "/cms?movie_id=" + currentMovie.id;
+  // }
+
+  // This function displays a message when there are no movies
+  // function displayEmpty(id) {
+  //   var query = window.location.search;
+  //   var partial = "";
+  //   if (id) {
+  //     partial = " for Playlist #" + id;
+  //   }
+  //   movieTr.empty();
+  //   // var messageH2 = $("<h2>");
+  //   // messageH2.css({ "text-align": "center", "margin-top": "50px" });
+  //   // messageH2.html("No movies yet" + partial");
+  //   // movieTr.append(messageH2);
+  // }
+
+
+
+
+
+
+
+
+
 
 
   // Getting the initial list of Playlist
@@ -91,10 +176,10 @@ $(function() {
 
   // Function for creating a new list row for playlists
   function createPlaylistRow(playlistData) {
-    let newTr = $("<tr class='triger'>");
+    newTr = $("<tr class='triger'>");
 
     //creating a movie row
-    let movieTr = $("<tr class='content'");
+    movieTr = $("<tr class='content'>");
 
     newTr.data("playlist", playlistData);
     newTr.append("<td >" + playlistData.name + "</td>");
@@ -104,7 +189,7 @@ $(function() {
       newTr.append("<td>0</td>");
     }
     newTr.append(
-      "<td><a href='/blog?playlist_id=" +
+      "<td><a href='./views/playlistMovies?playlist_id=" +
         playlistData.id +
         "'>Go to Movies</a></td>"
     );
@@ -139,7 +224,7 @@ $(function() {
     } else {
       renderEmpty();
     }
-  };
+  }
 
   // Function for handling what to render when there are no playlists
   function renderEmpty() {
