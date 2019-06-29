@@ -110,6 +110,6 @@ $(function() {
     $.ajax({
       method: "DELETE",
       url: "/api/playlists/" + id
-    }).then(getPlaylists);
+    }).then(getPlaylists).then(location.reload());
   }
 });
