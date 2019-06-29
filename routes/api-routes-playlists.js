@@ -5,11 +5,9 @@ module.exports = app => {
   app.get("/", (req, res) => {
     db.Playlist.findAll({
       include: [db.Movie]
-    })
-      .then(playlists => {
-        res.render("index", { playlists: playlists });
-      })
-      // .then(location.reload());
+    }).then(playlists => {
+      res.render("index", { playlists: playlists });
+    });
   });
 
   app.post("/playlists", (req, res) => {

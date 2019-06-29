@@ -3,7 +3,7 @@
   <div class="jumbotron hide-on-small-only" style="background-color: black; color: white">
     <h4 class="text-center">Search For Your Favorite Movie </h4>
     <h6 class="text-center"></h6>
-    
+
   </div>
   <div class="row">
     <div class="col-md-8 offset-md-2">
@@ -63,7 +63,6 @@
                 </select>
               </div>
               <br />
-              {{!-- <button type="submit" class="btn btn-success submit">Submit</button> --}}
             </div>
           </div>
         </div>
@@ -89,28 +88,29 @@
 
 {{!-- Testing my playlists --}}
 <div class="container shadow p-3 mb-5 bg-white rounded">
+  <h1 class="text-center"> All Playlists</h1>
+  <hr>
   <div class="row">
-    <div class="col-4">
-        <div class="card" style="width: 18rem;">
-        
-          {{#each playlists}}
-          <div class="card-body">
-            <h2 class="text-center card-title"">{{name}}</h2>
-              {{#each Movies}}
-              {{!-- <div class=" card-text"> --}}
-              <h4>Title: {{title}}</h4>
-              <p>Year: {{year}}</p>
-              <p> <a href={{link}}> IMDB Link </a></p>
-             {{!-- </div> --}}
-          {{/each}}
+    {{#each playlists}}
+        <div class="col-4">
+          <div class="card shadow-lg p-3 mb-5 bg-white rounded" >
+            <div class="card-body dropdown">
+              <h2 style = "text-transform: uppercase" class="text-center card-title text-primary trigger ">{{name}}</h2>
+               {{#each Movies}}
+                <div class=" card-text content">
+                  <h4 class="text-info"> {{title}}</h4>
+                  <p>Year: {{year}}</p>
+                  <p> <a href={{link}}> IMDB Link </a></p>
+                  <hr>
+               </div>
+               {{else}}
+                  <p class="text-muted"> No movies have been added</p>
+              {{/each}}
+            </div>
+          </div>
         </div>
-        
-        {{/each}}
-        </div>
-    </div>
-   
+    {{/each}}
   </div>
-
 </div>
 
 
@@ -118,7 +118,6 @@
 <!-- <script type="text/javascript" src="js/materialize.min.js"></script> -->
 <script src="https://code.jquery.com/jquery-3.4.1.min.js"
   integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
-<!-- axios -->
-{{!-- <script src="https://unpkg.com/axios/dist/axios.min.js"></script> --}}
 <script src="/js/index.js"></script>
 <script src="/js/playlists.js"></script>
+{{!-- <script src="/js/dropdown.js"></script> --}}
