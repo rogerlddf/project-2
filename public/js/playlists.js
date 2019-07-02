@@ -3,10 +3,14 @@ $(function() {
   const nameInput = $("#playlist-name");
   const playList = $("tbody");
   const playlistContainer = $(".playlist-container");
+  // let movieTr;
+  // let newTr;
+
   // Adding event listeners to the form to create a new object, and the button to delete
   // an Playlist
   $(document).on("submit", "#playlist-form", handlePlaylistFormSubmit);
   $(document).on("click", ".delete-playlist", handleDeleteButtonPress);
+
 
   // Getting the initial list of Playlist
   getPlaylists();
@@ -27,27 +31,31 @@ $(function() {
     upsertPlaylist({
       name: nameInput.val().trim()
     });
-  };
+  }
 
   // A function for creating an plyalist. Calls getPlaylists upon completion
   function upsertPlaylist(playlistData) {
     $.post("/api/playlists", playlistData)
       .then(getPlaylists)
       .then(location.reload());
-  };
+  }
 
   // Function for creating a new list row for playlists
   function createPlaylistRow(playlistData) {
-    var newTr = $("<tr>");
+    newTr = $("<tr class='triger'>");
+
+    //creating a movie row
+    movieTr = $("<tr class='content'>");
+
     newTr.data("playlist", playlistData);
-    newTr.append("<td>" + playlistData.name + "</td>");
+    newTr.append("<td >" + playlistData.name + "</td>");
     if (playlistData.Movies) {
       newTr.append("<td> " + playlistData.Movies.length + "</td>");
     } else {
       newTr.append("<td>0</td>");
     }
     newTr.append(
-      "<td><a href='/blog?playlist_id=" +
+      "<td><a href='./views/playlistMovies?playlist_id=" +
         playlistData.id +
         "'>Go to Movies</a></td>"
     );
@@ -55,7 +63,7 @@ $(function() {
       "<td><a style='cursor:pointer;color:red' class='delete-playlist'>Delete Playlist</a></td>"
     );
     return newTr;
-  };
+  }
 
   // Function for retrieving playlists and getting them ready to be rendered to the page
   function getPlaylists() {
@@ -67,7 +75,7 @@ $(function() {
       renderPlayList(rowsToAdd);
       nameInput.val("");
     });
-  };
+  }
 
   // A function for rendering the list of playlists to the page
   function renderPlayList(rows) {
@@ -82,7 +90,7 @@ $(function() {
     } else {
       renderEmpty();
     }
-  };
+  }
 
   // Function for handling what to render when there are no playlists
   function renderEmpty() {
@@ -102,6 +110,6 @@ $(function() {
     $.ajax({
       method: "DELETE",
       url: "/api/playlists/" + id
-    }).then(getPlaylists);
+    }).then(getPlaylists).then(location.reload());
   }
 });

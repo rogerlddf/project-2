@@ -82,7 +82,7 @@ $(function() {
     }
   });
 
-  // A function to get Playlists and then render our list of Authors
+  // A function to get Playlists and then render our list of Playlists
   function getPlaylists() {
     $.get("/api/playlists", renderPlayList);
   }
@@ -95,8 +95,6 @@ $(function() {
       rowsToAdd.push(createPlaylistRow(data[i]));
     }
     playlistSelect.empty();
-    console.log(rowsToAdd);
-    console.log(playlistSelect);
     playlistSelect.append(rowsToAdd);
     playlistSelect.val(playlistId);
   }
@@ -108,4 +106,10 @@ $(function() {
     listOption.text(playlist.name);
     return listOption;
   }
+
+  // //working on toggling active class
+  $(".trigger").on("click", function() {
+    $(this).toggleClass("active");
+    $(this).siblings().toggleClass("active");
+  })
 });

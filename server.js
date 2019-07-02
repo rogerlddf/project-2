@@ -34,6 +34,13 @@ if (process.env.NODE_ENV === "test") {
   syncOptions.force = true;
 }
 
+
+  db.Playlist.findAll({
+    include: [db.Movie]
+  }).then(playlists => {
+    console.log(playlists[0].Movies);
+  });
+
 // Starting the server, syncing our models ------------------------------------/
 db.sequelize.sync(syncOptions).then(() => {
   app.listen(PORT, () => {

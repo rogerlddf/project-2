@@ -1,6 +1,19 @@
 const db = require("../models");
 
 module.exports = app => {
+  //Testing my playlists
+  app.get("/", (req, res) => {
+    db.Playlist.findAll({
+      include: [db.Movie]
+    }).then(playlists => {
+      res.render("index", { playlists: playlists });
+    });
+  });
+
+  app.post("/playlists", (req, res) => {
+    Playlist.create(req.body).then(() => res.redirect("/"));
+  });
+
   app.get("/api/playlists", (req, res) => {
     // 1. Add a join to include all of each Author's Posts
     db.Playlist.findAll({ include: [db.Movie] }).then(dbPlaylist => {
