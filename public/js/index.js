@@ -31,12 +31,12 @@ $(function() {
         let output = "";
         $.each(movies, (index, movie) => {
           output += `
-            <div class="collection well align-center col col-s6 col-m3">
-              <img class='img-fluid hoverable' src="${movie.Poster}">
-              <h6 class="truncated">${movie.Title}</h6>
+            <div class="collection well text-center col col-s6 col-m3">
+              <img class='rounded' src="${movie.Poster}"  width="158">
+              <h5 class="truncated">${movie.Title}</h5>
               <p class="truncated">${movie.Year}</p>
-            <a href="http://imdb.com/title/${movie.imdbID}" target="_blank" class="btn btn-info">IMDB</a>
-            <button data-title="${movie.Title}" type="button" class="btn btn-info addToPlayList"> Add To Playlist </button>
+            <a class="#" href="http://imdb.com/title/${movie.imdbID}" target="_blank" class="btn btn-info">IMDB</a>
+            <button data-title="${movie.Title}" type="button" class="btn btn-info addToPlayList mb-3"> Add To Playlist </button>
             </div>
         `;
         });
