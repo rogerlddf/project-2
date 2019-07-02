@@ -32,7 +32,7 @@ $(function() {
         $.each(movies, (index, movie) => {
           output += `
             <div class="collection well align-center col col-s6 col-m3">
-              <img class='responsive-img hoverable z-depth-1' src="${movie.Poster}">
+              <img class='img-fluid hoverable' src="${movie.Poster}">
               <h6 class="truncated">${movie.Title}</h6>
               <p class="truncated">${movie.Year}</p>
             <a href="http://imdb.com/title/${movie.imdbID}" target="_blank" class="btn btn-info">IMDB</a>
@@ -65,7 +65,13 @@ $(function() {
       PlaylistId: playlistId,
       link: $(this)
         .prev()
-        .attr("href")
+        .attr("href"),
+        image: $(this)
+          .prev()
+          .prev()
+          .prev()
+          .prev()
+          .attr("src")
     };
     console.log(chosenMovie);
     if (playlistId) {
