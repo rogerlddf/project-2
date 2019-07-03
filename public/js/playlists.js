@@ -3,8 +3,7 @@ $(function() {
   const nameInput = $("#playlist-name");
   const playList = $("tbody");
   const playlistContainer = $(".playlist-container");
-  // let movieTr;
-  // let newTr;
+  
 
   // Adding event listeners to the form to create a new object, and the button to delete
   // an Playlist
@@ -114,6 +113,7 @@ $(function() {
     }).then(getPlaylists).then(location.reload());
   }
 
+  //scrolling down on click
   $(document).on("click", ".gtmovies", function(){
     $('html, body').animate({ scrollTop: 1000 }, 'slow');
     return false;
