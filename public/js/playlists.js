@@ -55,9 +55,10 @@ $(function() {
       newTr.append("<td>0</td>");
     }
     newTr.append(
-      "<td><a href='./views/playlistMovies?playlist_id=" +
-        playlistData.id +
-        "'>Go to Movies</a></td>"
+      // "<td><a href='./views/playlistMovies?playlist_id=" +
+      //   playlistData.id +
+      //   "'>Go to Movies</a></td>"
+      "<td><a class='gtmovies' href='#'>Go to Movies</a></td>"
     );
     newTr.append(
       "<td><a style='cursor:pointer;color:red' class='delete-playlist'>Delete Playlist</a></td>"
@@ -112,4 +113,9 @@ $(function() {
       url: "/api/playlists/" + id
     }).then(getPlaylists).then(location.reload());
   }
+
+  $(document).on("click", ".gtmovies", function(){
+    $('html, body').animate({ scrollTop: 1000 }, 'slow');
+    return false;
+  })
 });
