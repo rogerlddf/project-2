@@ -1,14 +1,14 @@
 {
   "development": {
     "username": "root",
-    "password": "password",
+    "password": "Fvp4077961",
     "database": "Moive_db",
     "host": "localhost",
     "dialect": "mysql"
   },
   "test": {
     "username": "root",
-    "password": "password",
+    "password": "Fvp4077961",
     "database": "testdb",
     "host": "localhost",
     "dialect": "mysql",
