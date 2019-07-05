@@ -3,8 +3,7 @@ $(function() {
   const nameInput = $("#playlist-name");
   const playList = $("tbody");
   const playlistContainer = $(".playlist-container");
-  // let movieTr;
-  // let newTr;
+  
 
   // Adding event listeners to the form to create a new object, and the button to delete
   // an Playlist
@@ -55,9 +54,10 @@ $(function() {
       newTr.append("<td>0</td>");
     }
     newTr.append(
-      "<td><a href='./views/playlistMovies?playlist_id=" +
-        playlistData.id +
-        "'>Go to Movies</a></td>"
+      // "<td><a href='./views/playlistMovies?playlist_id=" +
+      //   playlistData.id +
+      //   "'>Go to Movies</a></td>"
+      "<td><a class='gtmovies' href='#'>Go to Movies</a></td>"
     );
     newTr.append(
       "<td><a style='cursor:pointer;color:red' class='delete-playlist'>Delete Playlist</a></td>"
@@ -112,4 +112,10 @@ $(function() {
       url: "/api/playlists/" + id
     }).then(getPlaylists).then(location.reload());
   }
+
+  //scrolling down on click
+  $(document).on("click", ".gtmovies", function(){
+    $('html, body').animate({ scrollTop: 1000 }, 'slow');
+    return false;
+  })
 });
