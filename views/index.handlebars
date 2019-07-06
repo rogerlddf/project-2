@@ -2,7 +2,7 @@
   <nav class="navbar navbar-expand-lg"> 
     <div class="container">
       <a class="navbar-brand" href="#">Queuer</a>
-      <button class="btn btn-link my-2 my-sm-0" id="login-btn" type="submit">Login</button>
+      <button class="btn btn-primary my-2 my-sm-0" id="login-btn" type="submit">Login</button>
     </div> 
   </nav>
 </header>
@@ -19,7 +19,7 @@
 <div class="card-playlist">
     <div class="container">
       <div class="playlist-container justify-content-center">
-        <h1 class="text-center" id="playlist-title">Create and Manage Your Playlists</h1>
+        <h1 class="text-center title-text" id="playlist-title">Create and Manage Your Playlists</h1>
 
         <div class="input-group mb-3 playlist-form">
           <input type="text" class="form-control" id="playlist-name" placeholder="Your Playlist's Name" aria-label="Playlist's Name" aria-describedby="button-addon2">
@@ -87,9 +87,8 @@
 </div>
 
   {{!-- Testing my playlists --}}
-<div class="p-3 mb-5 bg-white rounded">
-  <h1 class="text-center"> All Playlists</h1>
-  <hr>
+<div class="card-see-playlists">
+  <h1 class="text-center title-text">Your Playlists</h1>
   <div class="row">
     {{#each playlists}}
     <div class="col-4">
