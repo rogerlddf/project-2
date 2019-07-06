@@ -6,16 +6,17 @@
     </div> 
   </nav>
 </header>
-  <div class="card-intro">
+
+<div class="card-intro">
     <div class="container">
       <div class="title-text"> 
         <h1 class="text-center" id="main-title">Like Spotify but for movies</h1>
         <h4 class="text-center" id="second-title">Search, review and create playlists for all your favorite movies</h4>
       </div>
     </div>
-  </div>
+</div>
 
-  <div class="card-playlist">
+<div class="card-playlist">
     <div class="container">
       <div class="playlist-container justify-content-center">
         <h1 class="text-center" id="playlist-title">Create and Manage Your Playlists</h1>
@@ -42,72 +43,76 @@
         </table>
       </div>
     </div>
-  </div>
+</div>
 
-  <div class="card-movie-search row justify-content-center">
+<div class="card-movie-search row justify-content-center">
     <div class="col-8">
       <!-- Current Movies-->
-      <h4 id="movie-header">Add Movie</h4>
+      <h1 class="text-center" id="movie-header">Add Movies To Your Playlist</h1>
           <div class="form">
-            <label for="movie-search"><i class="fas fa-film"></i> Search Your Movie </label>
-            <input class="form-control" id="movie-search" placeholder="Movie Name" type="text">
+            <div class="col-m6">
+              <div class="form-group">
+                <select class="custom-select" id="playlist" placeholder="Select Playlist">
+                  <option selected>Select a playlist</option>
+                </select>
+              </div>
+            </div>
+
+            <div class="input-group mb-3 playlist-form">
+              <input class="form-control" id="movie-search" placeholder="Search and add movies" type="text" aria-label="Search and add movies" aria-describedby="button-addon2">
+              <div class="button-div input-group-append">
+                 <!-- button for ALL MOVIES -->
+                <button class="btn btn-outline-primary submitAll" id="button-addon2" type="submit">Search Movies</button>
+              </div>
+            </div>
             {{!-- <div class="col s12 m6">
                 <button class="btn blue darken-3 z-depth-3 " id="submit" type="submit"><strong>Movie</strong>
                 </button>
               </div> --}}
-            <div class="col-m6 ">
-              <div class="form-group">
-                <label for="category">Select Playlist:</label>
-                <select class="custom-select" id="playlist"></select>
-              </div>
-            <!-- button for ALL MOVIES -->
-              <button class="btn btn-info" id="submitAll" type="submit">All Movies</button>
-            </div>
           </div>
     </div>
-  </div>
 
     <!-- Entry Form FOR ALL MOVIES -->
-  <div class="justify-content-center" id="all-movies-row">
-    <div class="col-12">
-      <div class="card mb-4">
-          <div class="card-header">
-            All Movies
-          </div>
-          <div class="card-body">
+    <div class="container all-movies-container">
+      <div class="justify-content-center" id="all-movies-row">
+        <div class="col-12">
+          <div class="card mb-4">
+            <div class="card-body">
             <div class="row" id="allmovie-list"></div>
-          </div>
-      </div>
-    </div>
-  </div>
-
-  {{!-- Testing my playlists --}}
-  <div class="p-3 mb-5 bg-white rounded">
-    <h1 class="text-center"> All Playlists</h1>
-    <hr>
-    <div class="row">
-      {{#each playlists}}
-          <div class="col-4">
-            <div class="card shadow-lg p-3 mb-5 bg-white rounded" >
-              <div class="card-body dropdown">
-                <h2 style = "text-transform: uppercase" class="text-center card-title text-primary trigger ">{{name}}</h2>
-                {{#each Movies}}
-                  <div class=" card-text content text-center">
-                    <h4 class="text-info text-center"> {{title}}</h4>
-                    <img class="img-fluid img-thumbnail text-center" src={{image}} alt="#" height="52" width="52">
-                    <p class="text-center">Year: {{year}}</p>
-                    <p class="text-center"> <a href={{link}} target="_blank"> IMDB Link </a></p>
-                    <hr>
-                  </div>
-                {{else}}
-                    <p class="text-muted"> No movies have been added</p>
-                {{/each}}
-              </div>
             </div>
           </div>
-      {{/each}}
+        </div>
+      </div>
     </div>
+</div>
+
+  {{!-- Testing my playlists --}}
+<div class="p-3 mb-5 bg-white rounded">
+  <h1 class="text-center"> All Playlists</h1>
+  <hr>
+  <div class="row">
+    {{#each playlists}}
+    <div class="col-4">
+      <div class="card shadow-lg p-3 mb-5 bg-white rounded" >
+        <div class="card-body dropdown">
+          <h2 style = "text-transform: uppercase" class="text-center card-title text-primary trigger ">{{name}}</h2>
+          {{#each Movies}}
+          <div class=" card-text content text-center">
+          <h4 class="text-info text-center"> {{title}}</h4>
+          <img class="img-fluid img-thumbnail text-center" src={{image}} alt="#" height="52" width="52">
+          <p class="text-center">Year: {{year}}</p>
+          <p class="text-center"> <a href={{link}} target="_blank"> IMDB Link </a></p>
+          <hr>
+          </div>
+        {{else}}
+        <p class="text-muted"> No movies have been added</p>
+        {{/each}}
+        </div>
+      </div>
+    </div>
+    {{/each}}
   </div>
+</div>
 
 
 <!--JavaScript at end of body for optimized loading-->
