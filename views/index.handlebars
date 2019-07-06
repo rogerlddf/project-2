@@ -16,32 +16,30 @@
   </div>
 
   <div class="card-playlist">
-    <div class="col-md-8 offset-md-2">
-      <div class="playlist-container">
-        <h1 class="text-center" id="playlist-title">Playlists</h1>
-        <table class="table table-borderless">
+    <div class="container">
+      <div class="playlist-container justify-content-center">
+        <h1 class="text-center" id="playlist-title">Create and Manage Your Playlists</h1>
+
+        <div class="input-group mb-3 playlist-form">
+          <input type="text" class="form-control" id="playlist-name" placeholder="Your Playlist's Name" aria-label="Playlist's Name" aria-describedby="button-addon2">
+          <div class="button-div input-group-append">
+            <button class="btn btn-outline-primary" id="button-addon2" type="submit">Button</button>
+          </div>
+        </div>
+
+        <table class="table table-borderless playlist-table">
           <thead>
             <tr id="playlist-table-contents">
               <th>Name</th>
-              <th># of Movies</th>
-              <th>See Playlist's Movies</th>
+              <th>Number of Movies</th>
+              <th>Movies In Playlist</th>
               {{!-- <th>New Movie</th> --}}
               <th>Delete Playlist</th>
             </tr>
           </thead>
           <tbody>
-            <tr id="form-row">
-              <form id="playlist-form">
-                <td colspan="4">
-                  <input class="form-control" placeholder="What do you want to call your playlist" id="playlist-name" type="text">
-                </td>
-              </form>
-            </tr>
           </tbody>
         </table>
-        <div class="button-div"> 
-          <button type="submit" class="btn btn-primary">Create Playlist</button>
-        </div>
       </div>
     </div>
   </div>
