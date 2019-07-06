@@ -8,18 +8,19 @@
 </header>
 <div class="container">
   <!-- Jumbotron -->
-  <div class="jumbotron hide-on-small-only">
-    <h4 class="text-center">Like Spotify but for movies</h4>
-    <h6 class="text-center">Search, review and create playlists for all your favorite movies</h2>
-
+  {{!-- to add jumbotron - class="jumbotron hide-on-small-only" --}}
+  <div class="card-intro">
+      <h1 class="text-center">Like Spotify but for movies</h1>
+      <h4 class="text-center">Search, review and create playlists for all your favorite movies</h4>
   </div>
-  <div class="row">
+
+  <div class="card-playlist">
     <div class="col-md-8 offset-md-2">
       <div class="playlist-container">
-        <h1>Playlists</h1>
-        <table class="table table-striped">
+        <h4 class="text-center">Playlists</h4>
+        <table class="table table-borderless">
           <thead>
-            <tr>
+            <tr id="playlist-table-contents">
               <th>Name</th>
               <th># of Movies</th>
               <th>See Playlist's Movies</th>
@@ -31,10 +32,10 @@
             <tr id="form-row">
               <form id="playlist-form">
                 <td colspan="4">
-                  <input placeholder="Enter a playlist name" id="playlist-name" type="text" />
+                  <input class="form-control" placeholder="What do you want to call your playlist" id="playlist-name" type="text">
                 </td>
                 <td>
-                  <button type="submit" class="btn btn-info">Create Playlist</button>
+                  <button type="submit" class="btn btn-primary">Create Playlist</button>
                 </td>
               </form>
             </tr>
@@ -45,12 +46,10 @@
   </div>
 
   <div class="row justify-content-center">
-
     <div class="col-8">
-
       <!-- Current Movies-->
       <div class="card">
-        <div class="card-header"><strong>Add Movie </strong></div>
+        <div class="card-header">Add Movie</div>
         <div class="card-body">
           <div class="form">
             <label for="movie-search"><i class="fas fa-film"></i> Search Your Movie </label>
@@ -59,18 +58,19 @@
                   <button class="btn blue darken-3 z-depth-3 " id="submit" type="submit"><strong>Movie</strong>
                   </button>
                 </div> --}}
-            <div class="col col-m6">
-              <!-- button for ALL MOVIES -->
-              <button class="btn btn-info" id="submitAll" type="submit"><strong>All
-                  Movies </strong> </button>
-            </div>
             <div class="col-m6 ">
               <div class="form-group">
                 <label for="category">Select Playlist:</label>
                 <select class="custom-select" id="playlist">
                 </select>
               </div>
-              <br />
+
+            <div class="col col-m6">
+              <!-- button for ALL MOVIES -->
+              <button class="btn btn-info" id="submitAll" type="submit"><strong>All
+                  Movies </strong> </button>
+            </div>
+              <br>
             </div>
           </div>
         </div>
