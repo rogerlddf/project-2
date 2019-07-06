@@ -34,6 +34,16 @@ nav {
 }
 
 /* Playlist Section */
+.card-playlist {
+    background-color: #bbbb; 
+    padding-top: 100px;
+    padding-bottom: 100px; 
+}
+
+th { 
+    font-weight: 300; 
+    font-size: 0.75em;
+}
 
 
 
