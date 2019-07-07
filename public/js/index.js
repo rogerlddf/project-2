@@ -1,4 +1,5 @@
 // movie gifs js
+// const db = require("../../models");
 $(function() {
   let form = $("#movie-search");
   let movieListAll = document.getElementById("allmovie-list");
@@ -51,7 +52,7 @@ $(function() {
   $(document).on("click", ".addToPlayList", function(event) {
     event.preventDefault();
     let playlistId = $(".custom-select").val();
-    console.log(playlistId)
+    // console.log(playlistId)
     let chosenMovie = {
       title: $(this)
         .prev()
@@ -82,7 +83,8 @@ $(function() {
           console.log(data);
         },
         "json"
-      ).then(location.reload());
+      )
+      .then(location.reload());
     } else {
       alert("Please choose a Playlist");
     }
@@ -117,5 +119,20 @@ $(function() {
   $(".trigger").on("click", function() {
     $(this).toggleClass("active");
     $(this).siblings().toggleClass("active");
+  })
+
+
+ 
+  //deleting movie from a playlist
+  $(document).on("click", ".far", function() {
+    $(this).parent().siblings().remove();
+    $(this).remove();
+    let idmovie = $(".movieid").data("id");
+    $.ajax({
+      type: "DELETE",
+      url: "/api/movies/" + idmovie
+    })
+    console.log(idmovie)
+    alert("Movie Deleted!")
   })
 });

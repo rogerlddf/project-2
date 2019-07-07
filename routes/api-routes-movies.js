@@ -37,7 +37,7 @@ module.exports = function(app) {
 
   // DELETE route for deleting posts
   app.delete("/api/movies/:id", function(req, res) {
-    db.Post.destroy({
+    db.Movie.destroy({
       where: {
         id: req.params.id
       }

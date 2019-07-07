@@ -107,10 +107,12 @@ $(function() {
       .parent("tr")
       .data("playlist");
     let id = listItemData.id;
+    console.log(listItemData);
     $.ajax({
       method: "DELETE",
       url: "/api/playlists/" + id
-    }).then(getPlaylists).then(location.reload());
+    }).then(getPlaylists)
+    .then(location.reload());
   }
 
   //scrolling down on click

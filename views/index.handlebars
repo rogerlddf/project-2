@@ -47,10 +47,6 @@
           <div class="form">
             <label for="movie-search"><i class="fas fa-film"></i> Search Your Movie </label>
             <input class="form-control" id="movie-search" placeholder="Movie Name" type="text">
-            {{!-- <div class="col s12 m6">
-                  <button class="btn blue darken-3 z-depth-3 " id="submit" type="submit"><strong>Movie</strong>
-                  </button>
-                </div> --}}
             <div class="col col-m6">
               <!-- button for ALL MOVIES -->
               <button class="btn btn-info" id="submitAll" type="submit"><strong>All
@@ -98,10 +94,11 @@
               <h2 style = "text-transform: uppercase" class="text-center card-title text-primary trigger ">{{name}}</h2>
                {{#each Movies}}
                 <div class=" card-text content text-center">
-                  <h4 class="text-info text-center"> {{title}}</h4>
+                  <h4 data-id={{this.id}} class="text-info text-center movieid"> {{title}} </h4>
                   <img class="img-fluid img-thumbnail text-center" src={{image}} alt="#" height="52" width="52">
                   <p class="text-center">Year: {{year}}</p>
                   <p class="text-center"> <a href={{link}} target="_blank"> IMDB Link </a></p>
+                  <p><i class="far fa-trash-alt"></i></p>
                   <hr>
                </div>
                {{else}}
