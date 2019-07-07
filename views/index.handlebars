@@ -1,0 +1,121 @@
+<div class="container">
+  <!-- Jumbotron -->
+  <div class="jumbotron hide-on-small-only" style="background-color: black; color: white">
+    <h4 class="text-center">Search For Your Favorite Movie </h4>
+    <h6 class="text-center"></h6>
+
+  </div>
+  <div class="row">
+    <div class="col-md-8 offset-md-2">
+      <div class="playlist-container">
+        <h1>Playlists</h1>
+        <table class="table table-striped">
+          <thead>
+            <tr>
+              <th>Name</th>
+              <th># of Movies</th>
+              <th>See Playlist's Movies</th>
+              {{!-- <th>New Movie</th> --}}
+              <th>Delete Playlist</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr id="form-row">
+              <form id="playlist-form">
+                <td colspan="4">
+                  <input placeholder="Enter a playlist name" id="playlist-name" type="text" />
+                </td>
+                <td>
+                  <button type="submit" class="btn btn-info">Create Playlist</button>
+                </td>
+              </form>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+
+  <div class="row justify-content-center">
+
+    <div class="col-8">
+
+      <!-- Current Movies-->
+      <div class="card">
+        <div class="card-header"><strong>Add Movie </strong></div>
+        <div class="card-body">
+          <div class="form">
+            <label for="movie-search"><i class="fas fa-film"></i> Search Your Movie </label>
+            <input class="form-control" id="movie-search" placeholder="Movie Name" type="text">
+            <div class="col col-m6">
+              <!-- button for ALL MOVIES -->
+              <button class="btn btn-info" id="submitAll" type="submit"><strong>All
+                  Movies </strong> </button>
+            </div>
+            <div class="col-m6 ">
+              <div class="form-group">
+                <label for="category">Select Playlist:</label>
+                <select class="custom-select" id="playlist">
+                </select>
+              </div>
+              <br />
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+  </div>
+
+  <!-- Entry Form FOR ALL MOVIES -->
+  <div class="row justify-content-center" id="all-movies-row">
+    <div class="col-12">
+      <div class="card mb-4">
+        <div class="card-header"><strong>All Movies</strong></div>
+        <div class="card-body">
+          <div class="row" id="allmovie-list"></div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+{{!-- Testing my playlists --}}
+<div class="container shadow p-3 mb-5 bg-white rounded">
+  <h1 class="text-center"> All Playlists</h1>
+  <hr>
+  <div class="row">
+    {{#each playlists}}
+        <div class="col-4">
+          <div class="card shadow-lg p-3 mb-5 bg-white rounded" >
+            <div class="card-body dropdown">
+              <h2 style = "text-transform: uppercase" class="text-center card-title text-primary trigger ">{{name}}</h2>
+               {{#each Movies}}
+                <div class=" card-text content text-center">
+                  <h4 data-id={{this.id}} class="text-info text-center movieid"> {{title}} </h4>
+                  <img class="img-fluid img-thumbnail text-center" src={{image}} alt="#" height="52" width="52">
+                  <p class="text-center">Year: {{year}}</p>
+                  <p class="text-center"> <a href={{link}} target="_blank"> IMDB Link </a></p>
+                  <p><i class="far fa-trash-alt"></i></p>
+                  <hr>
+               </div>
+               {{else}}
+                  <p class="text-muted"> No movies have been added</p>
+              {{/each}}
+            </div>
+          </div>
+        </div>
+    {{/each}}
+  </div>
+</div>
+
+
+<!--JavaScript at end of body for optimized loading-->
+<!-- <script type="text/javascript" src="js/materialize.min.js"></script> -->
+<script src="https://code.jquery.com/jquery-3.4.1.min.js"
+  integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
+<script src="/js/index.js"></script>
+<script src="/js/playlists.js"></script>
+{{!-- <script src="/js/dropdown.js"></script> --}}
