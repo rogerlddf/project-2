@@ -21,7 +21,7 @@
     <div class="col-md-8 offset-md-2">
       <div class="playlist-container">
         <h1>Playlists</h1>
-        <table class="table table-striped">
+        <table class="table table-borderless">
           <thead>
             <tr>
               <th>Name</th>
@@ -35,10 +35,12 @@
             <tr id="form-row">
               <form id="playlist-form">
                 <td colspan="4">
-                  <input placeholder="Enter a playlist name" id="playlist-name" type="text" />
-                </td>
-                <td>
-                  <button type="submit" class="btn btn-info">Create Playlist</button>
+                  <div class="input-group mb-3">
+                    <input type="text" class="form-control" id="playlist-name" placeholder="Your Playlist's Name" aria-label="Playlist's Name" aria-describedby="button-addon2">
+                    <div class="button-div input-group-append">
+                      <button class="btn btn-primary playlist-btn" id="button-addon2" type="submit">Button</button>
+                    </div>
+                  </div>
                 </td>
               </form>
             </tr>

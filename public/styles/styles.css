@@ -43,6 +43,8 @@ nav {
     padding-bottom: 100px; 
 }
 
+/* Playlist Table */
+
 th { 
     font-weight: 300; 
     font-size: 0.75em;
@@ -53,6 +55,10 @@ th {
     border: 2px solid #3174ee;
     border-radius: 10px !important; 
     
+}
+
+.playlist-table-info { 
+    font-size: 0.75em;
 }
 
 /* Add Movies Section */
