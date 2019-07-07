@@ -15,7 +15,6 @@ module.exports = function(app) {
     // });
   });
 
-
   // Load movies page and pass in an movies by id
   app.get("/movies/:id", function(req, res) {
     db.Example.findOne({ where: { id: req.params.id } }).then(function(

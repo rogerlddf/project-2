@@ -29,7 +29,7 @@ require("./routes/api-routes-movies")(app);
 require("./routes/api-routes-playlists")(app);
 require("./routes/htmlRoutes")(app);
 
-var syncOptions = {force: false};
+var syncOptions = { force: false };
 
 // If running a test, set syncOptions.force to true
 // clearing the `testdb`

@@ -8,17 +8,16 @@ module.exports = function(app) {
       query.PlaylistId = req.query.playlist_id;
     }
     // 1. Add a join here to include all of the Playlists to these posts
-    db.Post.findAll({
+    db.Movie.findAll({
       where: query
     }).then(function(dbMovie) {
       res.json(dbMovie);
     });
   });
 
-  // Get route for retrieving a single post
+  // Get route for retrieving a single movie
   app.get("/api/movies/:id", function(req, res) {
-    // 2. Add a join here to include the Playlist who wrote the Post
-    db.Post.findOne({
+    db.Movie.findOne({
       where: {
         id: req.params.id
       }
@@ -37,7 +36,7 @@ module.exports = function(app) {
 
   // DELETE route for deleting posts
   app.delete("/api/movies/:id", function(req, res) {
-    db.Post.destroy({
+    db.Movie.destroy({
       where: {
         id: req.params.id
       }
