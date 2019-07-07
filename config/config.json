@@ -1,14 +1,24 @@
 {
   "development": {
+<<<<<<< HEAD
     "username": "frank",
     "password": "bingo",
+=======
+    "username": "root",
+    "password": "addpassword",
+>>>>>>> 71e4819ae696bbf5086cafd7c2049a6e6da1c91e
     "database": "Moive_db",
     "host": "localhost",
     "dialect": "mysql"
   },
   "test": {
+<<<<<<< HEAD
     "username": "frank",
     "password": "bingo",
+=======
+    "username": "root",
+    "password": "addpassword",
+>>>>>>> 71e4819ae696bbf5086cafd7c2049a6e6da1c91e
     "database": "testdb",
     "host": "localhost",
     "dialect": "mysql",
