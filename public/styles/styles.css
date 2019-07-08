@@ -3,9 +3,14 @@ html {
 }
 
 body { 
+    padding-top: 82px;
     background-color: #ffff;
     font-family: Arial, Helvetica, sans-serif; 
     font-size: 1.5em; 
+}
+
+.anchor {
+    padding-top: 82px;
 }
 
 /* Section Titles */
@@ -16,6 +21,7 @@ body {
 /* Navbar */
 nav { 
     background-color: #1d1952;
+    max-height: 82px;
     border-width: 10px;
     border-top:0;
     border-left:0;
@@ -42,6 +48,12 @@ nav {
     color: #ffff;
     font-size: 0.75em;
     padding-right: 25px;
+}
+
+.nav-links:hover {
+    color: #ffcc03;
+    text-decoration: none;
+    transition: 0.3s;
 }
 
 #login-btn{ 
