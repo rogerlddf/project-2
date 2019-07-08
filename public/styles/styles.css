@@ -50,15 +50,20 @@ th {
     font-size: 0.75em;
 }
 
-.playlist-table { 
-    padding-top: 20px;
-    border: 2px solid #3174ee;
-    border-radius: 10px !important; 
-    
+thead { 
+    border: 2px solid #3174ee; 
+    border-radius: 15px; 
+}
+
+.playlist-container { 
+    background-color: #ffff; 
+    padding-top: 100px;
+    padding-bottom: 100px;
 }
 
 .playlist-table-info { 
-    font-size: 0.75em;
+    font-size: 0.65em;
+    text-align: center; 
 }
 
 /* Add Movies Section */

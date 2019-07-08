@@ -20,15 +20,15 @@
   <div class="row">
     <div class="col-md-8 offset-md-2">
       <div class="playlist-container">
-        <h1>Playlists</h1>
+        <h1 class="text-center title-text">Create A Playlist</h1>
         <table class="table table-borderless">
           <thead>
             <tr>
-              <th>Name</th>
-              <th># of Movies</th>
-              <th>See Playlist's Movies</th>
+              <th class="text-center">Playlist's Name</th>
+              <th class="text-center">Number of Movies</th>
+              <th class="text-center">Playlist's Movies</th>
               {{!-- <th>New Movie</th> --}}
-              <th>Delete Playlist</th>
+              <th class="text-center">Delete Playlist</th>
             </tr>
           </thead>
           <tbody>
@@ -53,7 +53,7 @@
 <div class="card-movie-search row justify-content-center">
     <div class="col-8">
       <!-- Current Movies-->
-      <h1 class="text-center" id="movie-header">Add Movies To Your Playlist</h1>
+      <h1 class="text-center title-text" id="movie-header">Add Movies To Your Playlist</h1>
           <div class="form">
             <div class="col-m6">
               <div class="form-group">
@@ -93,7 +93,7 @@
 
   {{!-- Testing my playlists --}}
 <div class="container shadow p-3 mb-5 bg-white rounded">
-  <h1 class="text-center"> All Playlists</h1>
+  <h1 class="text-center title-text"> All Playlists</h1>
   <hr>
   <div class="row">
     {{#each playlists}}
