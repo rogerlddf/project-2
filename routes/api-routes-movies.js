@@ -31,7 +31,8 @@ module.exports = function(app) {
   app.post("/api/movies", function(req, res) {
     db.Movie.create({...req.body, playlistID:req.params.playlist_id}).then(function(dbMovie) {
       res.json(dbMovie);
-    });
+    })
+    // .then(location.reload());
   });
 
   // DELETE route for deleting posts
@@ -42,8 +43,9 @@ module.exports = function(app) {
       }
     }).then(function(dbMovie) {
       res.json(dbMovie);
-    });
-  });
+    })
+  })
+    
 
   // PUT route for updating posts
   app.put("/api/movies", function(req, res) {

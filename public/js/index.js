@@ -74,7 +74,7 @@ $(function() {
           .prev()
           .attr("src")
     };
-    console.log(chosenMovie);
+    // console.log(chosenMovie);
     if (playlistId) {
       $.post(
         "/api/movies",
@@ -84,6 +84,7 @@ $(function() {
         },
         "json"
       )
+      .then(location.reload())
       .then(location.reload());
     } else {
       alert("Please choose a Playlist");
@@ -125,14 +126,15 @@ $(function() {
  
   //deleting movie from a playlist
   $(document).on("click", ".far", function() {
-    $(this).parent().siblings().remove();
+    let idmovie = $(this).data("id");
+
+    let movie = $(this).parent().siblings()
+    movie.remove();
     $(this).remove();
-    let idmovie = $(".movieid").data("id");
+    
     $.ajax({
       type: "DELETE",
       url: "/api/movies/" + idmovie
     })
-    console.log(idmovie)
-    alert("Movie Deleted!")
   })
 });

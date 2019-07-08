@@ -94,11 +94,11 @@
               <h2 style = "text-transform: uppercase" class="text-center card-title text-primary trigger ">{{name}}</h2>
                {{#each Movies}}
                 <div class=" card-text content text-center">
-                  <h4 data-id={{this.id}} class="text-info text-center movieid"> {{title}} </h4>
+                  <h4  class="text-info text-center movieid"> {{title}} </h4>
                   <img class="img-fluid img-thumbnail text-center" src={{image}} alt="#" height="52" width="52">
                   <p class="text-center">Year: {{year}}</p>
                   <p class="text-center"> <a href={{link}} target="_blank"> IMDB Link </a></p>
-                  <p><i class="far fa-trash-alt"></i></p>
+                  <p><i data-id={{this.id}} class="far fa-trash-alt"></i></p>
                   <hr>
                </div>
                {{else}}
