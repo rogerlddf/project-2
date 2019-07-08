@@ -3,7 +3,7 @@ html {
 }
 
 body { 
-    padding-top: 82px;
+    padding-bottom: 50px;
     background-color: #ffff;
     font-family: Arial, Helvetica, sans-serif; 
     font-size: 1.5em; 
@@ -11,6 +11,7 @@ body {
 
 .anchor {
     padding-top: 82px;
+    visibility: hidden;
 }
 
 h2 {
@@ -19,6 +20,12 @@ h2 {
     font-weight: 500;
     font-family: 'Montserrat', sans-serif;
     letter-spacing: 1px;
+}
+
+h5 {
+    padding-top: 10px;
+    font-weight: 400;
+    font-family: 'Montserrat', sans-serif;
 }
 
 p {
@@ -60,6 +67,7 @@ nav {
     color: #ffff;
     font-size: 0.75em;
     padding-right: 25px;
+    margin-left: 0px;
 }
 
 .nav-links:hover {
@@ -136,16 +144,20 @@ thead {
     padding-bottom: 20px;
 }
 
+.truncated {
+    margin-bottom: 2px;
+}
+
 /* This card holds all the movies that contain
 the title the user searched.*/
 .card { 
-    background-color: #dddd;
-    border: none; 
+    background-color: rgba(231,231,231, 0);
+    border: none;
 }
 
 .movie-poster-img { 
-    height: 158px; 
-    max-width: 158; 
+    max-height: 150px; 
+    max-width: 158px; 
 }
 
 .movie-title { 
@@ -154,15 +166,6 @@ the title the user searched.*/
 
 .movie-year { 
     font-size: .25em; 
-}
-
-.imdb-btn { 
-    float: left; 
-}
-
-.addToPlayList { 
-    float: left;
-    margin-left: 3px;  
 }
 
 /* Playlist Section */

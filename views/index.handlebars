@@ -1,8 +1,14 @@
 <header> 
+  <section class="anchor" id="top-section"></section>
   <nav class="navbar navbar-expand-lg fixed-top"> 
     <div class="container">
-      <a class="navbar-brand" href="#">Queuer</a><a class="nav-links ml-auto" href="#movie-search-section">Search</a>
-      <button class="btn btn-primary my-2 my-sm-0" id="login-btn" type="submit">Login</button>
+      <a class="navbar-brand" href="#">Queuer</a>
+      <section class="nav-section ml-auto">
+        <a class="nav-links" href="#top-section">Home</a>
+        <a class="nav-links" href="#movie-search-section">Search</a>
+        <a class="nav-links" href="#playlists-section">Playlists</a>
+        <button class="btn btn-primary my-2 my-sm-0" id="login-btn" type="submit">Login</button>
+      </section>
     </div> 
   </nav>
 </header>
@@ -38,7 +44,7 @@
                   <div class="input-group mb-3">
                     <input type="text" class="form-control" id="playlist-name" placeholder="Your Playlist's Name" aria-label="Playlist's Name" aria-describedby="button-addon2">
                     <div class="button-div input-group-append">
-                      <button class="btn btn-primary playlist-btn" id="button-addon2" type="submit">Button</button>
+                      <button class="btn btn-primary playlist-btn" id="button-addon2" type="submit">Create</button>
                     </div>
                   </div>
                 </td>
@@ -92,8 +98,9 @@
 </div>
 
   {{!-- Testing my playlists --}}
+<section class="anchor" id="playlists-section"></section>
 <div class="container shadow p-3 mb-5 bg-white rounded">
-  <h1 class="text-center title-text"> All Playlists</h1>
+  <h1 class="text-center title-text">Playlists</h1>
   <hr>
   <div class="row">
     {{#each playlists}}
