@@ -10,7 +10,7 @@ $(function() {
 
   // ALL MOVIES ON SUBMIT
   // ON SUBMIT BUTTON ALL MOVIES
-  $("#submitAll").on("click", e => {
+  $(".submitAll").on("click", e => {
     let searchText = form.val().trim();
     e.preventDefault();
     $("#allmovie-list").css("height", "400px");

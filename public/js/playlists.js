@@ -47,20 +47,20 @@ $(function() {
     movieTr = $("<tr class='content'>");
 
     newTr.data("playlist", playlistData);
-    newTr.append("<td >" + playlistData.name + "</td>");
+    newTr.append("<td class='playlist-table-info text-center'>" + playlistData.name + "</td>");
     if (playlistData.Movies) {
-      newTr.append("<td> " + playlistData.Movies.length + "</td>");
+      newTr.append("<td class='playlist-table-info'> " + playlistData.Movies.length + "</td>");
     } else {
-      newTr.append("<td>0</td>");
+      newTr.append("<td class='playlist-table-info'>0</td>");
     }
     newTr.append(
       // "<td><a href='./views/playlistMovies?playlist_id=" +
       //   playlistData.id +
       //   "'>Go to Movies</a></td>"
-      "<td><a class='gtmovies' href='#'>Go to Movies</a></td>"
+      "<td class='text-center'><a class='gtmovies playlist-table-info' href='#'>Go to Movies</a></td>"
     );
     newTr.append(
-      "<td><a style='cursor:pointer;color:red' class='delete-playlist'>Delete Playlist</a></td>"
+      "<td class='text-center'><a style='cursor:pointer;color:red' class='delete-playlist playlist-table-info'>Delete</a></td>"
     );
     return newTr;
   }
