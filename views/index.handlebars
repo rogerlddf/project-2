@@ -111,10 +111,10 @@
                {{#each Movies}}
                 <div class=" card-text content text-center">
                   <img class="img-fluid img-thumbnail text-center mb-2" src={{image}} alt="#" height="150" width="150">
-                  <h4 data-id={{this.id}} class="text-info text-center movieid"> {{title}}</h4>
+                  <h4 class="text-info text-center movieid"> {{title}}</h4>
                   <p class="text-center">Year: {{year}}</p>                
                   <p class="text-center btn btn-primary"><a class="button-link" href={{link}} target="_blank">IMDB</a></p>
-                  <p class="text-center btn btn-danger"><i class="far fa-trash-alt"></i></p>
+                  <p class="text-center btn btn-danger"><i  data-id={{this.id}} class="far fa-trash-alt" ></i></p>
                   <hr>
                </div>
                {{else}}
