@@ -57,7 +57,7 @@ $(function() {
       // "<td><a href='./views/playlistMovies?playlist_id=" +
       //   playlistData.id +
       //   "'>Go to Movies</a></td>"
-      "<td class='text-center'><a class='gtmovies playlist-table-info' href='#'>Go to Movies</a></td>"
+      "<td class='text-center'><a class='gtmovies playlist-table-info' href='#movie-search-section'>Add a Movie</a></td>"
     );
     newTr.append(
       "<td class='text-center'><a style='cursor:pointer;color:red' class='delete-playlist playlist-table-info'>Delete</a></td>"
@@ -116,8 +116,8 @@ $(function() {
   }
 
   //scrolling down on click
-  $(document).on("click", ".gtmovies", function(){
-    $('html, body').animate({ scrollTop: 1000 }, 'slow');
-    return false;
-  })
+  // $(document).on("click", ".gtmovies", function(){
+  //   $('html, body').animate({ scrollTop: 1000 }, 'slow');
+  //   return false;
+  // })
 });

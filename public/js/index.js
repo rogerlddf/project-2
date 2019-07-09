@@ -125,6 +125,7 @@ $(function() {
     $(this).toggleClass("active");
     $(this).siblings().toggleClass("active");
   })
+
  
   //deleting movie from a playlist
 //   $(document).on("click", ".far", function() {

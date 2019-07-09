@@ -2,11 +2,12 @@
   <section class="anchor" id="top-section"></section>
   <nav class="navbar navbar-expand-lg fixed-top"> 
     <div class="container">
-      <a class="navbar-brand" href="#">Queuer</a>
+      <a class="navbar-brand hvr-fade" href="#top-section">Queuer</a>
       <section class="nav-section ml-auto">
-        <a class="nav-links" href="#top-section">Home</a>
-        <a class="nav-links" href="#movie-search-section">Search</a>
-        <a class="nav-links" href="#playlists-section">Playlists</a>
+        <a class="nav-links hvr-fade" href="#top-section">Home</a>
+        <a class="nav-links hvr-fade" href="#create-section">Create</a>
+        <a class="nav-links hvr-fade" href="#movie-search-section">Search</a>
+        <a class="nav-links hvr-fade" href="#playlists-section">Playlists</a>
         <button class="btn btn-primary my-2 my-sm-0" id="login-btn" type="submit">Login</button>
       </section>
     </div> 
@@ -14,47 +15,32 @@
 </header>
 
 <div class="card-intro">
-    <div class="container">
-      <div class="title-text"> 
-        <h1 class="text-center" id="main-title">Like Spotify but for movies</h1> 
-        <h4 class="text-center" id="second-title">Search, review and create playlists for all your favorite movies</h4>
-      </div>
-    </div>
-</div>
-
-</div>
-  <div class="row">
-    <div class="col-md-8 offset-md-2">
-      <div class="playlist-container">
-        <h3 class="text-center title-text">Create A Playlist</h3>
-        <table class="table table-borderless">
-          <thead>
-            <tr>
-              <th class="text-center">Playlist's Name</th>
-              <th class="text-center">Number of Movies</th>
-              <th class="text-center">Playlist's Movies</th>
-              {{!-- <th>New Movie</th> --}}
-              <th class="text-center">Delete Playlist</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr id="form-row">
-              <form id="playlist-form">
-                <td colspan="4">
-                  <div class="input-group mb-3">
-                    <input type="text" class="form-control" id="playlist-name" placeholder="Your Playlist's Name" aria-label="Playlist's Name" aria-describedby="button-addon2">
-                    <div class="button-div input-group-append">
-                      <button class="btn btn-primary playlist-btn" id="button-addon2" type="submit">Create</button>
-                    </div>
-                  </div>
-                </td>
-              </form>
-            </tr>
-          </tbody>
-        </table>
-      </div>
+  <div class="container">
+    <div class="title-text"> 
+      <h1 class="text-center" id="main-title">Like Spotify but for movies</h1> 
+      <h4 class="text-center" id="second-title">Search, review and create playlists for all your favorite movies.</h4>
     </div>
   </div>
+</div>
+
+<section class="anchor" id="create-section"></section>
+<div class="row">
+  <div class="col-md-8 offset-md-2">
+    <div class="playlist-container">
+      <h3 class="text-center title-text">Create A Playlist</h3>
+      <form id="playlist-form">
+        <td colspan="4">
+          <div class="input-group mb-3">
+            <input type="text" class="form-control" id="playlist-name" placeholder="Enter a name for your Playlist" aria-label="Playlist's Name" aria-describedby="button-addon2">
+            <div class="button-div input-group-append">
+              <button class="btn btn-primary playlist-btn" id="button-addon2" type="submit">Create</button>
+            </div>
+          </div>
+        </td>
+      </form>
+    </div>
+  </div>
+</div>
 <section class="anchor" id="movie-search-section"></section>
 <div class="card-movie-search row justify-content-center">
     <div class="col-8">
@@ -102,17 +88,43 @@
 
   {{!-- Testing my playlists --}}
 <section class="anchor" id="playlists-section"></section>
-<div class="container shadow p-3 mb-5 bg-white rounded">
+<div class="container p-3 mb-5">
   <h3 class="text-center title-text">Playlists</h3>
-  <hr>
-  <div class="row">
+  <!-- Toggle Table -->
+  <div id="accordion">
+  <div class="card">
+    <div class="card-header mb-3 hvr-shutter-out-horizontal" data-toggle="collapse" data-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne" id="edit-playlist">
+      <h5 class="text-center">Edit</h5>
+    </div>
+    <div id="collapseOne" class="collapse hide" aria-labelledby="edit-playlist" data-parent="#accordion">
+      <div class="card-body">
+          <table class="table table-borderless">
+          <thead>
+            <tr>
+              <th class="text-center">Playlist's Name</th>
+              <th class="text-center">Number of Movies</th>
+              <th class="text-center">Playlist's Movies</th>
+              <th class="text-center">Delete Playlist</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr id="form-row">
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+</div>
+  <!-- Playlist cards -->
+  <div class="row mt-4">
     {{#each playlists}}
         <div class="col-4">
-          <div class="card shadow-lg p-3 mb-5 bg-white rounded" >
+          <div class="card shadow p-3 mb-5 bg-white rounded" >
             <div class="card-body dropdown">
-              <h2 class="text-center card-title text-primary trigger ">{{name}}</h2>
+              <h2 class="text-center card-title text-primary trigger">{{name}}</h2>
                {{#each Movies}}
-                <div class=" card-text content text-center">
+                <div class="card-text content text-center">
                   <img class="img-fluid img-thumbnail text-center mb-2" src={{image}} alt="#" height="150" width="150">
                   <h4 class="text-info text-center movieid"> {{title}}</h4>
                   <p class="text-center">Year: {{year}}</p>                
@@ -130,61 +142,12 @@
   </div>
 </div>
 
-{{!-- <div class="row">
-  <div class="col-8 col-m6">
-    <div class="accordion" id="accordionExample">
-    <div class="card">
-      <div class="card-header" id="headingOne">
-        <h5 class="mb-0">
-          <button class="btn btn-link" type="button" data-toggle="collapse" data-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
-            Collapsible Group Item #1
-          </button>
-        </h5>
-      </div>
-
-      <div id="collapseOne" class="collapse show" aria-labelledby="headingOne" data-parent="#accordionExample">
-        <div class="card-body">
-          Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. 3 wolf moon officia aute, non cupidatat skateboard dolor brunch. Food truck quinoa nesciunt laborum eiusmod. Brunch 3 wolf moon tempor, sunt aliqua put a bird on it squid single-origin coffee nulla assumenda shoreditch et. Nihil anim keffiyeh helvetica, craft beer labore wes anderson cred nesciunt sapiente ea proident. Ad vegan excepteur butcher vice lomo. Leggings occaecat craft beer farm-to-table, raw denim aesthetic synth nesciunt you probably haven't heard of them accusamus labore sustainable VHS.
-        </div>
-      </div>
-    </div>
-    <div class="card">
-      <div class="card-header" id="headingTwo">
-        <h5 class="mb-0">
-          <button class="btn btn-link collapsed" type="button" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
-            Collapsible Group Item #2
-          </button>
-        </h5>
-      </div>
-      <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionExample">
-        <div class="card-body">
-          Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. 3 wolf moon officia aute, non cupidatat skateboard dolor brunch. Food truck quinoa nesciunt laborum eiusmod. Brunch 3 wolf moon tempor, sunt aliqua put a bird on it squid single-origin coffee nulla assumenda shoreditch et. Nihil anim keffiyeh helvetica, craft beer labore wes anderson cred nesciunt sapiente ea proident. Ad vegan excepteur butcher vice lomo. Leggings occaecat craft beer farm-to-table, raw denim aesthetic synth nesciunt you probably haven't heard of them accusamus labore sustainable VHS.
-        </div>
-      </div>
-    </div>
-    <div class="card">
-      <div class="card-header" id="headingThree">
-        <h5 class="mb-0">
-          <button class="btn btn-link collapsed" type="button" data-toggle="collapse" data-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
-            Collapsible Group Item #3
-          </button>
-        </h5>
-      </div>
-      <div id="collapseThree" class="collapse" aria-labelledby="headingThree" data-parent="#accordionExample">
-        <div class="card-body">
-          Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. 3 wolf moon officia aute, non cupidatat skateboard dolor brunch. Food truck quinoa nesciunt laborum eiusmod. Brunch 3 wolf moon tempor, sunt aliqua put a bird on it squid single-origin coffee nulla assumenda shoreditch et. Nihil anim keffiyeh helvetica, craft beer labore wes anderson cred nesciunt sapiente ea proident. Ad vegan excepteur butcher vice lomo. Leggings occaecat craft beer farm-to-table, raw denim aesthetic synth nesciunt you probably haven't heard of them accusamus labore sustainable VHS.
-        </div>
-      </div>
-    </div>
-    </div>
-  </div>
-</div> --}}
-
-
 <!--JavaScript at end of body for optimized loading-->
 <!-- <script type="text/javascript" src="js/materialize.min.js"></script> -->
 <script src="https://code.jquery.com/jquery-3.4.1.min.js"
   integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
 <script src="/js/index.js"></script>
 <script src="/js/playlists.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
 {{!-- <script src="/js/dropdown.js"></script> --}}
