@@ -97,6 +97,7 @@ $(function() {
     } else {
       alert("Please choose a Playlist");
     }
+    location.reload(true);
   });
 
   // A function to get Playlists and then render our list of Playlists
