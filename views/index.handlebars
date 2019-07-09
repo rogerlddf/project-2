@@ -1,103 +1,135 @@
-<div class="container">
-  <!-- Jumbotron -->
-  <div class="jumbotron hide-on-small-only">
-    <h4 class="text-center">Search For Your Favorite Movie </h4>
-    <h6 class="text-center"></h6>
+<header> 
+  <section class="anchor" id="top-section"></section>
+  <nav class="navbar navbar-expand-lg fixed-top"> 
+    <div class="container">
+      <a class="navbar-brand hvr-fade" href="#top-section">Queuer</a>
+      <section class="nav-section ml-auto">
+        <a class="nav-links hvr-fade" href="#top-section">Home</a>
+        <a class="nav-links hvr-fade" href="#create-section">Create</a>
+        <a class="nav-links hvr-fade" href="#movie-search-section">Search</a>
+        <a class="nav-links hvr-fade" href="#playlists-section">Playlists</a>
+        <button class="btn btn-primary my-2 my-sm-0" id="login-btn" type="submit">Login</button>
+      </section>
+    </div> 
+  </nav>
+</header>
 
+<div class="card-intro">
+  <div class="container">
+    <div class="title-text"> 
+      <h1 class="text-center" id="main-title">Like Spotify but for movies</h1> 
+      <h4 class="text-center" id="second-title">Search, review and create playlists for all your favorite movies.</h4>
+    </div>
   </div>
-  <div class="row">
-    <div class="col-md-8 offset-md-2">
-      <div class="playlist-container">
-        <h1>Playlists</h1>
-        <table class="table table-striped">
+</div>
+
+<section class="anchor" id="create-section"></section>
+<div class="row">
+  <div class="col-md-8 offset-md-2">
+    <div class="playlist-container">
+      <h3 class="text-center title-text">Create A Playlist</h3>
+      <form id="playlist-form">
+        <td colspan="4">
+          <div class="input-group mb-3">
+            <input type="text" class="form-control" id="playlist-name" placeholder="Enter a name for your Playlist" aria-label="Playlist's Name" aria-describedby="button-addon2">
+            <div class="button-div input-group-append">
+              <button class="btn btn-primary playlist-btn" id="button-addon2" type="submit">Create</button>
+            </div>
+          </div>
+        </td>
+      </form>
+    </div>
+  </div>
+</div>
+<section class="anchor" id="movie-search-section"></section>
+<div class="card-movie-search row justify-content-center">
+    <div class="col-8">
+      <!-- Movie Search -->
+      <h1 class="text-center title-text" id="movie-header">Add Movies To Your Playlist</h1>
+          <div class="form">
+            <div class="col-m6">
+              <div class="form-group">
+                <select class="custom-select" id="playlist" placeholder="Select Playlist">
+                  <option selected>Select a playlist</option>
+                </select>
+              </div>
+            </div>
+
+            <div class="input-group mb-3 playlist-form">
+              <input class="form-control" id="movie-search" placeholder="Search and add movies" type="text" aria-label="Search and add movies" aria-describedby="button-addon2">
+              <div class="button-div input-group-append">
+                 <!-- button for ALL MOVIES -->
+                <button class="btn btn-primary submitAll" id="button-addon2" type="submit">Search Movies</button>
+              </div>
+            </div>
+            {{!-- <div class="col s12 m6">
+                <button class="btn blue darken-3 z-depth-3 " id="submit" type="submit"><strong>Movie</strong>
+                </button>
+              </div> --}}
+          </div>
+    </div>
+</div>
+<!-- Search Results -->
+<div class="search-results row justify-content-center" id="hide-show">
+    <!-- Entry Form FOR ALL MOVIES -->
+    <div class="container all-movies-container">
+      <div class="justify-content-center" id="all-movies-row">
+        <div class="col-12">
+          <h6 class="search-text">Search Results for </h6>
+          <div class="card mb-4">
+            <div class="card-body">
+            <div class="row" id="allmovie-list"></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+</div>
+
+  {{!-- Testing my playlists --}}
+<section class="anchor" id="playlists-section"></section>
+<div class="container p-3 mb-5">
+  <h3 class="text-center title-text">Playlists</h3>
+  <!-- Toggle Table -->
+  <div id="accordion">
+  <div class="card">
+    <div class="card-header mb-3 hvr-shutter-out-horizontal" data-toggle="collapse" data-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne" id="edit-playlist">
+      <h5 class="text-center">Edit</h5>
+    </div>
+    <div id="collapseOne" class="collapse hide" aria-labelledby="edit-playlist" data-parent="#accordion">
+      <div class="card-body">
+          <table class="table table-borderless">
           <thead>
             <tr>
-              <th>Name</th>
-              <th># of Movies</th>
-              <th>See Playlist's Movies</th>
-              {{!-- <th>New Movie</th> --}}
-              <th>Delete Playlist</th>
+              <th class="text-center">Playlist's Name</th>
+              <th class="text-center">Number of Movies</th>
+              <th class="text-center">Playlist's Movies</th>
+              <th class="text-center">Delete Playlist</th>
             </tr>
           </thead>
           <tbody>
             <tr id="form-row">
-              <form id="playlist-form">
-                <td colspan="4">
-                  <input placeholder="Enter a playlist name" id="playlist-name" type="text" />
-                </td>
-                <td>
-                  <button type="submit" class="btn btn-info">Create Playlist</button>
-                </td>
-              </form>
             </tr>
           </tbody>
         </table>
       </div>
     </div>
   </div>
-
-  <div class="row justify-content-center">
-
-    <div class="col-8">
-
-      <!-- Current Movies-->
-      <div class="card">
-        <div class="card-header"><strong>Add Movie </strong></div>
-        <div class="card-body">
-          <div class="form">
-            <label for="movie-search"><i class="fas fa-film"></i> Search Your Movie </label>
-            <input class="form-control" id="movie-search" placeholder="Movie Name" type="text">
-            <div class="col col-m6">
-              <!-- button for ALL MOVIES -->
-              <button class="btn btn-info" id="submitAll" type="submit"><strong>All
-                  Movies </strong> </button>
-            </div>
-            <div class="col-m6 ">
-              <div class="form-group">
-                <label for="category">Select Playlist:</label>
-                <select class="custom-select" id="playlist">
-                </select>
-              </div>
-              <br />
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-
-  </div>
-
-  <!-- Entry Form FOR ALL MOVIES -->
-  <div class="row justify-content-center" id="all-movies-row">
-    <div class="col-12">
-      <div class="card mb-4">
-        <div class="card-header"><strong>All Movies</strong></div>
-        <div class="card-body">
-          <div class="row" id="allmovie-list"></div>
-        </div>
-      </div>
-    </div>
-
-  </div>
 </div>
-
-{{!-- Testing my playlists --}}
-<div class="container shadow p-3 mb-5 bg-white rounded">
-  <h1 class="text-center"> All Playlists</h1>
-  <hr>
-  <div class="row">
+  <!-- Playlist cards -->
+  <div class="row mt-4">
     {{#each playlists}}
         <div class="col-4">
-          <div class="card shadow-lg p-3 mb-5 bg-white rounded" >
+          <div class="card shadow p-3 mb-5 bg-white rounded" >
             <div class="card-body dropdown">
-              <h2 style = "text-transform: uppercase" class="text-center card-title text-primary trigger ">{{name}}</h2>
+              <h2 class="text-center card-title text-primary trigger">{{name}}</h2>
                {{#each Movies}}
-                <div class=" card-text content text-center">
-                  <h4 data-id={{this.id}} class="text-info text-center movieid"> {{title}} </h4>
-                  <img class="img-fluid img-thumbnail text-center" src={{image}} alt="#" height="52" width="52">
-                  <p class="text-center">Year: {{year}}</p>
-                  <p class="text-center"> <a href={{link}} target="_blank"> IMDB Link </a></p>
-                  <p><i class="far fa-trash-alt"></i></p>
+                <div class="card-text content text-center">
+                  <img class="img-fluid img-thumbnail text-center mb-2" src={{image}} alt="#" height="150" width="150">
+                  <h4 class="text-info text-center movieid"> {{title}}</h4>
+                  <p class="text-center">Year: {{year}}</p>                
+                  <p class="text-center btn btn-primary"><a class="button-link" href={{link}} target="_blank">IMDB</a></p>
+                  <p class="text-center btn btn-danger"><i data-id={{this.id}} class="far fa-trash-alt" ></i></p>
                   <hr>
                </div>
                {{else}}
@@ -110,11 +142,12 @@
   </div>
 </div>
 
-
 <!--JavaScript at end of body for optimized loading-->
 <!-- <script type="text/javascript" src="js/materialize.min.js"></script> -->
 <script src="https://code.jquery.com/jquery-3.4.1.min.js"
   integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
 <script src="/js/index.js"></script>
 <script src="/js/playlists.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
 {{!-- <script src="/js/dropdown.js"></script> --}}

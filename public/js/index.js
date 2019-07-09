@@ -1,5 +1,6 @@
 // movie gifs js
 // const db = require("../../models");
+
 $(function() {
   let form = $("#movie-search");
   let movieListAll = document.getElementById("allmovie-list");
@@ -10,8 +11,10 @@ $(function() {
 
   // ALL MOVIES ON SUBMIT
   // ON SUBMIT BUTTON ALL MOVIES
-  $("#submitAll").on("click", e => {
+  $(".submitAll").on("click", e => {
+    $("#hide-show").show();
     let searchText = form.val().trim();
+    $(".search-text").append('"' + searchText + '"');
     e.preventDefault();
     $("#allmovie-list").css("height", "400px");
     $("#allmovie-list").css("overflow", "auto");
@@ -32,12 +35,12 @@ $(function() {
         let output = "";
         $.each(movies, (index, movie) => {
           output += `
-            <div class="collection well text-center col col-s6 col-m3">
-              <img class='rounded' src="${movie.Poster}"  width="158">
+            <div class="collection-well text-center col col-s6 col-m3 mb-4">
+              <img class='rounded' src="${movie.Poster}"  width="150" heigh="150">
               <h5 class="truncated">${movie.Title}</h5>
-              <p class="truncated">${movie.Year}</p>
-            <a class="#" href="http://imdb.com/title/${movie.imdbID}" target="_blank" class="btn btn-info">IMDB</a>
-            <button data-title="${movie.Title}" type="button" class="btn btn-info addToPlayList mb-3"> Add To Playlist </button>
+              <p class="truncated">Year: ${movie.Year}</p>
+              <a class="btn btn-primary" href="http://imdb.com/title/${movie.imdbID}" target="_blank">IMDB</a>
+              <button type="button" class="btn btn-success addToPlayList" data-title="${movie.Title}">Add</button>
             </div>
         `;
         });
@@ -49,6 +52,7 @@ $(function() {
       });
   });
 
+  //adding to a Playlist
   $(document).on("click", ".addToPlayList", function(event) {
     event.preventDefault();
     let playlistId = $(".custom-select").val();
@@ -74,7 +78,7 @@ $(function() {
           .prev()
           .attr("src")
     };
-    console.log(chosenMovie);
+    // console.log(chosenMovie);
     if (playlistId) {
       $.post(
         "/api/movies",
@@ -84,6 +88,7 @@ $(function() {
         },
         "json"
       )
+      .then(location.reload())
       .then(location.reload());
     } else {
       alert("Please choose a Playlist");
@@ -121,18 +126,32 @@ $(function() {
     $(this).siblings().toggleClass("active");
   })
 
-
  
   //deleting movie from a playlist
+//   $(document).on("click", ".far", function() {
+//     $(this).parent().siblings().remove();
+//     $(this).remove();
+//     let idmovie = $(".movieid").data("id");
+//     $.ajax({
+//       type: "DELETE",
+//       url: "/api/movies/" + idmovie
+//     })
+//     console.log(idmovie)
+//     alert("Movie Deleted!")
+//   })
+// });
+
+//deleting movie from a playlist
   $(document).on("click", ".far", function() {
-    $(this).parent().siblings().remove();
+    let idmovie = $(this).data("id");
+
+    let movie = $(this).parent().siblings()
+    movie.remove();
     $(this).remove();
-    let idmovie = $(".movieid").data("id");
+    
     $.ajax({
       type: "DELETE",
       url: "/api/movies/" + idmovie
     })
-    console.log(idmovie)
-    alert("Movie Deleted!")
   })
 });
