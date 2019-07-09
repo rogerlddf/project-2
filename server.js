@@ -8,12 +8,24 @@ const db = require("./models");
 const app = express();
 const PORT = process.env.PORT || 3060;
 
+if (process.env.JAWSDB_URL) {
+  connection = mysql.createConnection(process.env.JAWSDB_URL);
+} else {
+  connection = mysql.createConnection({
+    host: "localhost",
+    user: "root",
+    password: "Rtamames1458",
+    database: "Moive_db"
+  });
+};
+
 // Middleware
 app.use(express.urlencoded({ extended: false }));
 app.use(express.json());
 app.use(express.static("public"));
 app.use(express.static("/public"));
 app.use(express.static(path.join(__dirname, "/public/styles")));
+
 
 // Handlebars
 app.engine(
