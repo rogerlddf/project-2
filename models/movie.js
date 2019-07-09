@@ -28,6 +28,9 @@ module.exports = (sequelize, DataTypes) => {
     Movie.belongsTo(models.Playlist, {
       foreignKey: "PlaylistId"
     });
+    Movie.hasMany(models.Review, {
+      onDelete: "cascade"
+    });
   };
 
   return Movie;

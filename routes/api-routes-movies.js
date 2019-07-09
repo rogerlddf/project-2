@@ -8,17 +8,16 @@ module.exports = function(app) {
       query.PlaylistId = req.query.playlist_id;
     }
     // 1. Add a join here to include all of the Playlists to these posts
-    db.Post.findAll({
+    db.Movie.findAll({
       where: query
     }).then(function(dbMovie) {
       res.json(dbMovie);
     });
   });
 
-  // Get route for retrieving a single post
+  // Get route for retrieving a single movie
   app.get("/api/movies/:id", function(req, res) {
-    // 2. Add a join here to include the Playlist who wrote the Post
-    db.Post.findOne({
+    db.Movie.findOne({
       where: {
         id: req.params.id
       }
@@ -56,4 +55,41 @@ module.exports = function(app) {
       res.json(dbMovie);
     });
   });
+
+
+
+    // POST route for saving a new post
+    app.post("/api/reviews", function(req, res) {
+      console.log(req.body);
+      db.Review.create({
+        title: req.body.title,
+        body: req.body.body,
+        category: req.body.category
+      })
+        .then(function(dbReview) {
+          res.json(dbReview);
+        });
+    });
+
+
+    app.get("/api/allreviews", (req, res) => {
+      // 1. Add a join to include all of each Author's Posts
+      db.Review.findAll({ include: [db.Movie] }).then(dbReview => {
+        res.json(dbReview);
+      });
+    });
+  
+    app.get("/api/reviews/:id", (req, res) => {
+      // 2; Add a join to include all of the Author's Posts here
+      db.Review.findOne({
+        include: [db.Movie],
+        where: {
+          id: req.params.id
+        }
+      }).then(dbReview => {
+        res.json(dbReview);
+      });
+    });
+
+
 };
