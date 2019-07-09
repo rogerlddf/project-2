@@ -2,6 +2,7 @@ require("dotenv").config();
 const express = require("express");
 const exphbs = require("express-handlebars");
 const path = require("path");
+var mysql = require("mysql2");
 
 const db = require("./models");
 
