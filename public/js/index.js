@@ -1,5 +1,6 @@
 // movie gifs js
 // const db = require("../../models");
+
 $(function() {
   let form = $("#movie-search");
   let movieListAll = document.getElementById("allmovie-list");
@@ -11,7 +12,9 @@ $(function() {
   // ALL MOVIES ON SUBMIT
   // ON SUBMIT BUTTON ALL MOVIES
   $(".submitAll").on("click", e => {
+    $("#hide-show").show();
     let searchText = form.val().trim();
+    $(".search-text").append('"' + searchText + '"');
     e.preventDefault();
     $("#allmovie-list").css("height", "400px");
     $("#allmovie-list").css("overflow", "auto");

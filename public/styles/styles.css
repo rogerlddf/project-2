@@ -14,12 +14,28 @@ body {
     visibility: hidden;
 }
 
-h2 {
-    text-transform: uppercase;
-    font-size: 18pt;
+h1 {
+    font-size: 2em;
     font-weight: 500;
     font-family: 'Montserrat', sans-serif;
     letter-spacing: 1px;
+    color: #ffff;
+}
+
+h2 {
+    text-transform: uppercase;
+    font-size: 1em;
+    font-weight: 500;
+    font-family: 'Montserrat', sans-serif;
+    letter-spacing: 1px;
+}
+
+h3 {
+    font-size: 2em;
+    font-weight: 500;
+    font-family: 'Montserrat', sans-serif;
+    letter-spacing: 1px;
+    color:#384150;
 }
 
 h5 {
@@ -28,8 +44,16 @@ h5 {
     font-family: 'Montserrat', sans-serif;
 }
 
+h6 {
+    font-size: 1.5em;
+    font-weight: 500;
+    font-style: italic;
+    color: #384150;
+    font-family: 'Lato', sans-serif;
+}
+
 p {
-    font-size: 12pt;
+    font-size: 1em;
 }
 
 /* Section Titles */
@@ -135,9 +159,16 @@ thead {
 
 /* Add Movies Section */
 .card-movie-search { 
-    background-color: #dddd; 
-    padding-top: 100px;
-    padding-bottom: 100px;
+    padding: 50px 0px;
+    background: linear-gradient(180deg, rgba(30,171,202,1) 0%, rgba(47,60,145,1) 100%);
+}
+
+#hide-show { 
+    display: none;
+}
+
+.search-results {
+    padding-top: 60px;
 }
 
 #movie-header { 
@@ -199,6 +230,7 @@ the title the user searched.*/
   display: block;
 }
 
+/* Buttons */
 .button-link {
     text-decoration: none;
     color: #ffff;
