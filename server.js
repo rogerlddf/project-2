@@ -7,7 +7,7 @@ var mysql = require("mysql2");
 const db = require("./models");
 
 const app = express();
-const PORT = process.env.PORT || 3060;
+// const PORT = process.env.PORT || 3060;
 
 console.log("Test 1");
 
@@ -68,7 +68,7 @@ console.log("Test 4");
 
 // Starting the server, syncing our models ------------------------------------/
 db.sequelize.sync(syncOptions).then(() => {
-  app.listen(PORT, () => {
+  app.listen(process.env.PORT || 5000) => {
     console.log(
       "==> 🌎  Listening on port %s. Visit http://localhost:%s/ in your browser.",
       PORT,
