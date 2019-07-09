@@ -9,6 +9,8 @@ const db = require("./models");
 const app = express();
 const PORT = process.env.PORT || 3060;
 
+console.log("Test 1");
+
 if (process.env.JAWSDB_URL) {
   connection = mysql.createConnection(process.env.JAWSDB_URL);
 } else {
@@ -20,6 +22,9 @@ if (process.env.JAWSDB_URL) {
   });
 };
 
+console.log("Test 2");
+
+
 // Middleware
 app.use(express.urlencoded({ extended: false }));
 app.use(express.json());
@@ -27,6 +32,7 @@ app.use(express.static("public"));
 app.use(express.static("/public"));
 app.use(express.static(path.join(__dirname, "/public/styles")));
 
+console.log("Test 3");
 
 // Handlebars
 app.engine(
@@ -56,6 +62,9 @@ if (process.env.NODE_ENV === "test") {
   }).then(playlists => {
     console.log(playlists[0].Movies);
   });
+
+console.log("Test 4");
+
 
 // Starting the server, syncing our models ------------------------------------/
 db.sequelize.sync(syncOptions).then(() => {
