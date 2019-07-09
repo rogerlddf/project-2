@@ -1,8 +1,14 @@
 <header> 
-  <nav class="navbar navbar-expand-lg"> 
+  <section class="anchor" id="top-section"></section>
+  <nav class="navbar navbar-expand-lg fixed-top"> 
     <div class="container">
       <a class="navbar-brand" href="#">Queuer</a>
-      <button class="btn btn-primary my-2 my-sm-0" id="login-btn" type="submit">Login</button>
+      <section class="nav-section ml-auto">
+        <a class="nav-links" href="#top-section">Home</a>
+        <a class="nav-links" href="#movie-search-section">Search</a>
+        <a class="nav-links" href="#playlists-section">Playlists</a>
+        <button class="btn btn-primary my-2 my-sm-0" id="login-btn" type="submit">Login</button>
+      </section>
     </div> 
   </nav>
 </header>
@@ -10,7 +16,7 @@
 <div class="card-intro">
     <div class="container">
       <div class="title-text"> 
-        <h1 class="text-center" id="main-title">Like Spotify but for movies</h1>
+        <h1 class="text-center" id="main-title">Like Spotify but for movies</h1> 
         <h4 class="text-center" id="second-title">Search, review and create playlists for all your favorite movies</h4>
       </div>
     </div>
@@ -20,7 +26,7 @@
   <div class="row">
     <div class="col-md-8 offset-md-2">
       <div class="playlist-container">
-        <h1 class="text-center title-text">Create A Playlist</h1>
+        <h3 class="text-center title-text">Create A Playlist</h3>
         <table class="table table-borderless">
           <thead>
             <tr>
@@ -38,7 +44,7 @@
                   <div class="input-group mb-3">
                     <input type="text" class="form-control" id="playlist-name" placeholder="Your Playlist's Name" aria-label="Playlist's Name" aria-describedby="button-addon2">
                     <div class="button-div input-group-append">
-                      <button class="btn btn-primary playlist-btn" id="button-addon2" type="submit">Button</button>
+                      <button class="btn btn-primary playlist-btn" id="button-addon2" type="submit">Create</button>
                     </div>
                   </div>
                 </td>
@@ -49,10 +55,10 @@
       </div>
     </div>
   </div>
-
+<section class="anchor" id="movie-search-section"></section>
 <div class="card-movie-search row justify-content-center">
     <div class="col-8">
-      <!-- Current Movies-->
+      <!-- Movie Search -->
       <h1 class="text-center title-text" id="movie-header">Add Movies To Your Playlist</h1>
           <div class="form">
             <div class="col-m6">
@@ -76,11 +82,14 @@
               </div> --}}
           </div>
     </div>
-
+</div>
+<!-- Search Results -->
+<div class="search-results row justify-content-center" id="hide-show">
     <!-- Entry Form FOR ALL MOVIES -->
     <div class="container all-movies-container">
       <div class="justify-content-center" id="all-movies-row">
         <div class="col-12">
+          <h6 class="search-text">Search Results for </h6>
           <div class="card mb-4">
             <div class="card-body">
             <div class="row" id="allmovie-list"></div>
@@ -92,22 +101,24 @@
 </div>
 
   {{!-- Testing my playlists --}}
+<section class="anchor" id="playlists-section"></section>
 <div class="container shadow p-3 mb-5 bg-white rounded">
-  <h1 class="text-center title-text"> All Playlists</h1>
+  <h3 class="text-center title-text">Playlists</h3>
   <hr>
   <div class="row">
     {{#each playlists}}
         <div class="col-4">
           <div class="card shadow-lg p-3 mb-5 bg-white rounded" >
             <div class="card-body dropdown">
-              <h2 style = "text-transform: uppercase" class="text-center card-title text-primary trigger ">{{name}}</h2>
+              <h2 class="text-center card-title text-primary trigger ">{{name}}</h2>
                {{#each Movies}}
                 <div class=" card-text content text-center">
-                  <h4 data-id={{this.id}} class="text-info text-center movieid"> {{title}} </h4>
-                  <img class="img-fluid img-thumbnail text-center" src={{image}} alt="#" height="52" width="52">
-                  <p class="text-center">Year: {{year}}</p>
-                  <p class="text-center"> <a href={{link}} target="_blank"> IMDB Link </a></p>
-                  <p><i class="far fa-trash-alt"></i></p>
+                  <img class="img-fluid img-thumbnail text-center mb-2" src={{image}} alt="#" height="150" width="150" id="thumb{{this.id}}">
+                  <h4 data-id={{this.id}} class="text-info text-center movieid" id="header{{this.id}}"> {{title}} </h4>
+                  <p class="text-center">Year: {{year}}</p>                
+                  <p class="text-center btn btn-primary"><a class="button-link" href={{link}} target="_blank">IMDB</a></p>
+                  <p class="text-center btn btn-danger"><i data-id={{this.id}} class="far fa-trash-alt" ></i></p>
+                  <p class="text-center btn btn-info"><i class="far fa-comments" data-id={{this.id}}></i></p>
                   <hr>
                </div>
                {{else}}
@@ -121,10 +132,103 @@
 </div>
 
 
+<div id="myModal" class="modal">
+   <div class="modal-content container">
+    <span class="close">&times;</span>
+  <div class="row">
+    <div class="col-sm-12 col-md-4 col-lg-4" id="#current-movie" value="">
+
+      <h2 id="modal-header"></h2>
+      <img class="img-fluid img-thumbnail text-center"  alt="#"  width="100%" id="modalthumb">
+    </div>
+    <div class="col-sm-12 col-md-8 col-lg-8">
+              <div class="reviews-container">
+
+
+              </div>
+               <form id="cms">
+          <div class="form-group">
+            <label for="title">Alias:</label>
+            <input type="text" class="form-control form-control-sm" id="title">
+            <br />
+            <label for="body">Review:</label>
+            <textarea class="form-control form-control-sm" rows="4" id="body"></textarea>
+            <div class="form-group">
+              <label for="rating">Select Rating:</label>
+              <select class="custom-select" id="rating">
+                <option value="1">1</option>
+                <option value="2">2</option>
+                <option value="3">3</option>
+                <option value="4">4</option>
+                <option value="5">5</option>
+              </select>
+            </div>
+            <br/>
+            <button type="submit" class="btn btn-success submit btn-lg">Submit</button>
+          </div>
+        </form>
+            </div>
+          </div>
+        </div>
+    </div>
+
+{{!-- <div class="row">
+  <div class="col-8 col-m6">
+    <div class="accordion" id="accordionExample">
+    <div class="card">
+      <div class="card-header" id="headingOne">
+        <h5 class="mb-0">
+          <button class="btn btn-link" type="button" data-toggle="collapse" data-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+            Collapsible Group Item #1
+          </button>
+        </h5>
+      </div>
+
+      <div id="collapseOne" class="collapse show" aria-labelledby="headingOne" data-parent="#accordionExample">
+        <div class="card-body">
+          Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. 3 wolf moon officia aute, non cupidatat skateboard dolor brunch. Food truck quinoa nesciunt laborum eiusmod. Brunch 3 wolf moon tempor, sunt aliqua put a bird on it squid single-origin coffee nulla assumenda shoreditch et. Nihil anim keffiyeh helvetica, craft beer labore wes anderson cred nesciunt sapiente ea proident. Ad vegan excepteur butcher vice lomo. Leggings occaecat craft beer farm-to-table, raw denim aesthetic synth nesciunt you probably haven't heard of them accusamus labore sustainable VHS.
+        </div>
+      </div>
+    </div>
+    <div class="card">
+      <div class="card-header" id="headingTwo">
+        <h5 class="mb-0">
+          <button class="btn btn-link collapsed" type="button" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+            Collapsible Group Item #2
+          </button>
+        </h5>
+      </div>
+      <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionExample">
+        <div class="card-body">
+          Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. 3 wolf moon officia aute, non cupidatat skateboard dolor brunch. Food truck quinoa nesciunt laborum eiusmod. Brunch 3 wolf moon tempor, sunt aliqua put a bird on it squid single-origin coffee nulla assumenda shoreditch et. Nihil anim keffiyeh helvetica, craft beer labore wes anderson cred nesciunt sapiente ea proident. Ad vegan excepteur butcher vice lomo. Leggings occaecat craft beer farm-to-table, raw denim aesthetic synth nesciunt you probably haven't heard of them accusamus labore sustainable VHS.
+        </div>
+      </div>
+    </div>
+    <div class="card">
+      <div class="card-header" id="headingThree">
+        <h5 class="mb-0">
+          <button class="btn btn-link collapsed" type="button" data-toggle="collapse" data-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
+            Collapsible Group Item #3
+          </button>
+        </h5>
+      </div>
+      <div id="collapseThree" class="collapse" aria-labelledby="headingThree" data-parent="#accordionExample">
+        <div class="card-body">
+          Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. 3 wolf moon officia aute, non cupidatat skateboard dolor brunch. Food truck quinoa nesciunt laborum eiusmod. Brunch 3 wolf moon tempor, sunt aliqua put a bird on it squid single-origin coffee nulla assumenda shoreditch et. Nihil anim keffiyeh helvetica, craft beer labore wes anderson cred nesciunt sapiente ea proident. Ad vegan excepteur butcher vice lomo. Leggings occaecat craft beer farm-to-table, raw denim aesthetic synth nesciunt you probably haven't heard of them accusamus labore sustainable VHS.
+        </div>
+      </div>
+    </div>
+    </div>
+  </div>
+</div> --}}
+
+
 <!--JavaScript at end of body for optimized loading-->
 <!-- <script type="text/javascript" src="js/materialize.min.js"></script> -->
 <script src="https://code.jquery.com/jquery-3.4.1.min.js"
   integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
 <script src="/js/index.js"></script>
 <script src="/js/playlists.js"></script>
+<script src="/js/reviews.js"></script>
+<script src="/js/cms.js"></script>
 {{!-- <script src="/js/dropdown.js"></script> --}}

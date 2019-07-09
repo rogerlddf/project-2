@@ -1,7 +1,59 @@
+html {
+    scroll-behavior: smooth;
+}
+
 body { 
+    padding-bottom: 50px;
     background-color: #ffff;
     font-family: Arial, Helvetica, sans-serif; 
     font-size: 1.5em; 
+}
+
+.anchor {
+    padding-top: 82px;
+    visibility: hidden;
+}
+
+h1 {
+    font-size: 2em;
+    font-weight: 500;
+    font-family: 'Montserrat', sans-serif;
+    letter-spacing: 1px;
+    color: #ffff;
+}
+
+h2 {
+    text-transform: uppercase;
+    font-size: 1em;
+    font-weight: 500;
+    font-family: 'Montserrat', sans-serif;
+    letter-spacing: 1px;
+}
+
+h3 {
+    font-size: 2em;
+    font-weight: 500;
+    font-family: 'Montserrat', sans-serif;
+    letter-spacing: 1px;
+    color:#384150;
+}
+
+h5 {
+    padding-top: 10px;
+    font-weight: 400;
+    font-family: 'Montserrat', sans-serif;
+}
+
+h6 {
+    font-size: 1.5em;
+    font-weight: 500;
+    font-style: italic;
+    color: #384150;
+    font-family: 'Lato', sans-serif;
+}
+
+p {
+    font-size: 1em;
 }
 
 /* Section Titles */
@@ -11,27 +63,66 @@ body {
 
 /* Navbar */
 nav { 
-    background-color: #34354a; 
-    border-bottom: 10px solid #3174ee;
+    background-color: #1d1952;
+    max-height: 82px;
+    border-width: 10px;
+    border-top:0;
+    border-left:0;
+    border-right:0;
+    border-style: solid;
+    border-image: 
+        linear-gradient(
+       to right, 
+       #1eabca, 
+       #2f3c91
+        ) 1 ;
 }
 
 .navbar-brand { 
     text-decoration: none; 
     color: #ffff;
+    padding: 10px 0px;
+    font-size: 1em;
+    font-weight: 700;
+}
+
+.nav-links { 
+    text-decoration: none; 
+    color: #ffff;
     font-size: 0.75em;
+    padding-right: 25px;
+    margin-left: 0px;
+}
+
+.nav-links:hover {
+    color: #ffcc03;
+    text-decoration: none;
+    transition: 0.3s;
 }
 
 #login-btn{ 
     text-decoration: none; 
     color: #ffff;
-    font-size: 0.75em;
+    background-color: #1d1952;
+    border: 1px solid #ffff;
+    border-radius: 25px;
+    padding: 8px 20px;
+    font-size: 0.7em;
+}
+
+#login-btn:hover {
+    color: #ffcc03;
+    border-color: #ffcc03;
 }
 
 
 /* Intro Section*/
 .card-intro {
-    /* test color */
-    background-color: #dddd; 
+    color: #ffff;
+    background-image: url("/img/intro-back.jpg");
+    background-color: #1d1952;
+    background-size: cover;
+    background-repeat: no-repeat;
     padding-top: 100px;
     padding-bottom: 100px;
 }
@@ -68,25 +159,36 @@ thead {
 
 /* Add Movies Section */
 .card-movie-search { 
-    background-color: #dddd; 
-    padding-top: 100px;
-    padding-bottom: 100px;
+    padding: 50px 0px;
+    background: linear-gradient(180deg, rgba(30,171,202,1) 0%, rgba(47,60,145,1) 100%);
+}
+
+#hide-show { 
+    display: none;
+}
+
+.search-results {
+    padding-top: 60px;
 }
 
 #movie-header { 
     padding-bottom: 20px;
 }
 
+.truncated {
+    margin-bottom: 2px;
+}
+
 /* This card holds all the movies that contain
 the title the user searched.*/
 .card { 
-    background-color: #dddd;
-    border: none; 
+    background-color: rgba(231,231,231, 0);
+    border: none;
 }
 
 .movie-poster-img { 
-    height: 158px; 
-    max-width: 158; 
+    max-height: 150px; 
+    max-width: 158px; 
 }
 
 .movie-title { 
@@ -95,15 +197,6 @@ the title the user searched.*/
 
 .movie-year { 
     font-size: .25em; 
-}
-
-.imdb-btn { 
-    float: left; 
-}
-
-.addToPlayList { 
-    float: left;
-    margin-left: 3px;  
 }
 
 /* Playlist Section */
@@ -135,6 +228,17 @@ the title the user searched.*/
 }
 .dropdown .content.active{
   display: block;
+}
+
+/* Buttons */
+.button-link {
+    text-decoration: none;
+    color: #ffff;
+}
+
+.button-link:hover {
+    text-decoration: none;
+    color: #ffff;
 }
 
 
