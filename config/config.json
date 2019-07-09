@@ -9,13 +9,16 @@
   "test": {
     "username": "root",
     "password": "password",
-    "database": "testdb",
+    "database": "Moive_db",
     "host": "localhost",
     "dialect": "mysql",
     "logging": false
   },
   "production": {
-    "use_env_variable": "JAWSDB_URL",
+    "username": "root",
+    "password": "password",
+    "database": "Moive_db",
+    "host": "127.0.0.1",
     "dialect": "mysql"
   }
 }
