@@ -1,10 +1,5 @@
 
-<!DOCTYPE html>
-<html>
-<head>
-  <title></title>
-</head>
-<body>
+{{!-- 
 <form id="signup" name="signup" method="post" action="/signup">
   <label for="email">Email Address</label>
   <input class="text" name="email" type="email" />
@@ -14,8 +9,68 @@
   <input name="lastname" type="text" />
   <label for="password">Password</label>
   <input name="password" type="password" />
-  <input class="btn" type="submit" value="Sign Up" />
-</form>
+  <input class="class="btn btn-primary my-2 my-sm-0"" id="Signup-btn" type="submit" value="Sign Up" />
+</form> --}}
 
-</body>
-</html>
+<div class="row mt-5">
+  <div class="col-md-6 m-auto">
+    <div class="card card-body">
+      <h1 class="text-center mb-3">
+        <i class="fas fa-user-plus"></i> Register
+      </h1>
+      <form action="/signup" method="POST">
+        <div class="form-group">
+          <label for="name">Name</label>
+          <input
+            type="name"
+            id="name"
+            name="name"
+            class="form-control"
+            placeholder="Enter Name"
+            {{!-- value="<%= typeof name != 'undefined' ? name : '' %>" --}}
+          />
+        </div>
+        <div class="form-group">
+          <label for="email">Email</label>
+          <input
+            type="email"
+            id="email"
+            name="email"
+            class="form-control"
+            placeholder="Enter Email"
+            {{!-- value="<%= typeof email != 'undefined' ? email : '' %>" --}}
+          />
+        </div>
+        <div class="form-group">
+          <label for="password">Password</label>
+          <input
+            type="password"
+            id="password"
+            name="password"
+            class="form-control"
+            placeholder="Create Password"
+            {{!-- value="<%= typeof password != 'undefined' ? password : '' %>" --}}
+          />
+        </div>
+        {{!-- <div class="form-group">
+          <label for="password2">Confirm Password</label>
+          <input
+            type="password"
+            id="password2"
+            name="password2"
+            class="form-control"
+            placeholder="Confirm Password"
+            value="<%= typeof password2 != 'undefined' ? password2 : '' %>"
+          />
+        </div> --}}
+        <button type="submit" class="btn btn-primary btn-block"> Sign Up</button>
+      </form>
+      <p class="lead mt-4">Have An Account? <a href="/signin">Login</a></p>
+    </div>
+  </div>
+</div>
+
+<script src="https://code.jquery.com/jquery-3.4.1.min.js"
+  integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
+<script src="/js/index.js"></script>
+<script src="/js/playlists.js"></script>

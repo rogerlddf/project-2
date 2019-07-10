@@ -34,7 +34,7 @@ app.engine('handlebars', exphbs({
 }));
 app.set('view engine', '.handlebars');
 app.get('/', (_req, res) => {
-  res.render('./signup');
+  res.render('./signin');
 });
 
 //Models
