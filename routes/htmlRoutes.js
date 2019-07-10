@@ -7,12 +7,12 @@ module.exports = function(app) {
       msg: "Welcome!"
       // movies: dbMovies
     });
-    // db.Moive_db.findAll({}).then(function(dbMovies) {
-    //   res.render("index", {
-    //     msg: "Welcome!",
-    //     movies: dbMovies
-    //   });
-    // });
+    db.Moive_db.findAll({}).then(function(dbMovies) {
+      res.render("index", {
+        msg: "Welcome!",
+        movies: dbMovies
+      });
+    });
   });
 
   // Load movies page and pass in an movies by id
@@ -26,8 +26,8 @@ module.exports = function(app) {
     });
   });
 
-  // Render 404 page for any unmatched routes
-  app.get("*", function(req, res) {
-    res.render("404");
-  });
-};
+//   // Render 404 page for any unmatched routes
+//   app.get("*", function(req, res) {
+//     res.render("404");
+//   });
+// };

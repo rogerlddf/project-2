@@ -6,7 +6,7 @@ const db = require("./models");
 const passport = require("passport");
 const session = require("express-session");
 const bodyParser = require("body-parser");
-const cookieParser = require("cookieParser")
+// const cookieParser = require("cookieParser")
 const app = express();
 const PORT = process.env.PORT || 3000;
 
@@ -23,10 +23,10 @@ app.use(session({
   saveUninitialized: true
 })); // session secret
 
-app.use(cookieParser())
-app.use(passport.initialize())
-app.use(passport.session()) // persistent login sessions
-app.use(flash())
+
+app.use(passport.initialize());
+app.use(passport.session()); // persistent login sessions
+
 //For Handlebars
 app.set('views', './views')
 app.engine('handlebars', exphbs({
@@ -34,7 +34,7 @@ app.engine('handlebars', exphbs({
 }));
 app.set('view engine', '.handlebars');
 app.get('/', (_req, res) => {
-  res.send('Welcome to Passport with Sequelize');
+  res.render('./signup');
 });
 
 //Models
@@ -46,7 +46,7 @@ app.use(express.json());
 app.use(express.static("public"));
 app.use(express.static("/public"));
 app.use(express.static(path.join(__dirname, "/public/styles")));
-
+// console.log('1');
 // Handlebars
 app.engine(
   "handlebars",
@@ -55,35 +55,39 @@ app.engine(
   })
 );
 app.set("view engine", "handlebars");
-
+// console.log('2');
 // Routes
 require("./routes/api-routes-movies")(app);
+// console.log('3');
 require("./routes/api-routes-playlists")(app);
-require("./routes/htmlRoutes")(app);
-require("./routes/auth.js")(app);
+// console.log('4');
+// require("./routes/htmlRoutes")(app);
+// console.log('5');
+require("./routes/auth.js")(app, passport);
+// console.log('6');
 //Routes
 
     //Routes
-    var authRoute = require('./app/routes/auth.js')(passport);
+    var authRoute = require('./routes/auth.js')(app, passport);
 
     //load passport strategies
     require('./config/passport/passport.js')(passport,db.user);
 
 
 //Sync Database
-
-db.sequelize.sync().then(function() {
-    console.log('Nice! Database looks fine')
-
+// console.log('7');
+// sequelize.sync({force: true}).then(() => {
+//     console.log('Nice! Database looks fine')
+//     console.log('8');
 // If running a test, set syncOptions.force to true
 // clearing the `testdb`
-if (process.env.NODE_ENV === "test") {
-  syncOptions.force = true;
-}}).catch(function(err) {
+// if (process.env.NODE_ENV === "test") {
+//   syncOptions.force = true;
+// }}).catch(function(err) {
  
-  console.log(err, "Something went wrong with the Database Update!")
+//   console.log(err, "Something went wrong with the Database Update!")
 
-});
+// });
 
   db.Playlist.findAll({
     include: [db.Movie]
@@ -92,7 +96,7 @@ if (process.env.NODE_ENV === "test") {
   });
 
 // Starting the server, syncing our models ------------------------------------/
-db.sequelize.sync(syncOptions).then(() => {
+db.sequelize.sync().then(() => {
   app.listen(PORT, () => {
     console.log(
       "==> 🌎  Listening on port %s. Visit http://localhost:%s/ in your browser.",
